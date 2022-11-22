@@ -46,7 +46,7 @@ class MainActivity : AppCompatActivity() {
         kertasGame()
     }
 
-    fun clearGame(){
+    fun clearGame() {
         imgRefresh.setOnClickListener {
             batu.setBackgroundResource(0)
             gunting.setBackgroundResource(0)
@@ -58,23 +58,24 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun batuGame(){
+    fun batuGame() {
         batu.setOnClickListener {
             batu.setBackgroundResource(R.drawable.bg_suit)
             gunting.setBackgroundResource(0)
             kertas.setBackgroundResource(0)
             when ((1..3).random()) {
-                1 ->
-                {guntingCom.setBackgroundResource(R.drawable.bg_suit)
+                1 -> {
+                    guntingCom.setBackgroundResource(R.drawable.bg_suit)
                     tvVS.setImageResource(R.drawable.img_menang)
                     batuCom.setBackgroundResource(0)
-                    kertasCom.setBackgroundResource(0)}
-                2 ->
-                {
+                    kertasCom.setBackgroundResource(0)
+                }
+                2 -> {
                     batuCom.setBackgroundResource(R.drawable.bg_suit)
                     tvVS.setImageResource(R.drawable.img_draw)
                     guntingCom.setBackgroundResource(0)
-                    kertasCom.setBackgroundResource(0)}
+                    kertasCom.setBackgroundResource(0)
+                }
                 /*batuCom.setImageResource(R.drawable.batu_selected)
                     .also {
                         tvVS.setImageResource(R.drawable.img_draw)
@@ -91,7 +92,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun guntingGame(){
+    fun guntingGame() {
         gunting.setOnClickListener {
             gunting.setBackgroundResource(R.drawable.bg_suit)
             batu.setBackgroundResource(0)
@@ -119,7 +120,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun kertasGame(){
+    fun kertasGame() {
         kertas.setOnClickListener {
             kertas.setBackgroundResource(R.drawable.bg_suit)
             batu.setBackgroundResource(0)

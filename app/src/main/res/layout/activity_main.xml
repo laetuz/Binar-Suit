@@ -13,80 +13,78 @@
 
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true">
+
         <TextView
             android:id="@+id/tvTitle"
-            android:textColor="@color/black"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="50dp"
             android:gravity="center"
-            android:text="Kertas\nGunting\nBatu"
-            android:textSize="24sp"
-             />
+            android:text="@string/title"
+            android:textColor="@color/black"
+            android:textSize="24sp" />
     </RelativeLayout>
 
     <ImageView
         android:id="@+id/img_refresh"
         android:layout_width="50dp"
         android:layout_height="50dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/refresh"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"/>
-
+        app:srcCompat="@drawable/refresh" />
 
 
     <RelativeLayout
         android:id="@+id/layLinear1"
         android:layout_width="120dp"
         android:layout_height="400dp"
-        android:orientation="vertical"
+        android:layout_alignParentStart="true"
 
         android:layout_centerVertical="true"
-        android:layout_alignParentStart="true">
+        android:orientation="vertical">
 
         <TextView
             android:id="@+id/tvPlayer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="Pemain 1"
-            android:textColor="@color/black"
-            android:textSize="24sp"
             android:layout_alignParentTop="true"
-            />
+            android:gravity="center"
+            android:text="@string/pemain1"
+            android:textColor="@color/black"
+            android:textSize="24sp" />
 
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="350dp"
             android:layout_alignParentBottom="true">
+
             <ImageView
                 android:id="@+id/imgPlayerBatu"
                 android:layout_width="wrap_content"
                 android:layout_height="100dp"
-                android:src="@drawable/batu"
-                android:layout_alignParentTop="true"/>
+                android:layout_alignParentTop="true"
+                android:src="@drawable/batu" />
 
             <ImageView
                 android:id="@+id/imgPlayerKertas"
                 android:layout_width="wrap_content"
                 android:layout_height="100dp"
-                android:src="@drawable/kertas"
+                android:layout_centerInParent="true"
                 android:layout_marginTop="20dp"
-                android:layout_centerInParent="true"/>
+                android:src="@drawable/kertas" />
 
             <ImageView
                 android:id="@+id/imgPlayerGunting"
                 android:layout_width="wrap_content"
                 android:layout_height="100dp"
-                android:src="@drawable/gunting"
+                android:layout_alignParentBottom="true"
                 android:layout_marginTop="20dp"
-                android:layout_alignParentBottom="true"/>
+                android:src="@drawable/gunting" />
         </RelativeLayout>
-
 
 
     </RelativeLayout>
@@ -95,25 +93,25 @@
         android:id="@+id/tvVS"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
         android:gravity="center"
-        android:src="@drawable/img_vs"
-        android:layout_centerInParent="true" />
+        android:src="@drawable/img_vs" />
 
     <RelativeLayout
         android:id="@+id/layLinear2"
         android:layout_width="120dp"
         android:layout_height="400dp"
-        android:layout_centerVertical="true"
         android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
         android:orientation="vertical">
 
         <TextView
             android:id="@+id/tvCPU"
-            android:textColor="@color/black"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="COM"
+            android:text="@string/com"
+            android:textColor="@color/black"
             android:textSize="24sp" />
 
         <RelativeLayout
@@ -121,28 +119,27 @@
             android:layout_height="350dp"
             android:layout_alignParentBottom="true">
 
-        <ImageView
-            android:id="@+id/imgComBatu"
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:src="@drawable/batu"
-            />
+            <ImageView
+                android:id="@+id/imgComBatu"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:src="@drawable/batu" />
 
-        <ImageView
-            android:id="@+id/imgComKertas"
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:src="@drawable/kertas"
-            android:layout_marginTop="20dp"
-            android:layout_centerInParent="true"/>
+            <ImageView
+                android:id="@+id/imgComKertas"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_centerInParent="true"
+                android:layout_marginTop="20dp"
+                android:src="@drawable/kertas" />
 
-        <ImageView
-            android:id="@+id/imgComGunting"
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:src="@drawable/gunting"
-            android:layout_marginTop="20dp"
-            android:layout_alignParentBottom="true"/>
+            <ImageView
+                android:id="@+id/imgComGunting"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_alignParentBottom="true"
+                android:layout_marginTop="20dp"
+                android:src="@drawable/gunting" />
         </RelativeLayout>
     </RelativeLayout>
 </RelativeLayout>
