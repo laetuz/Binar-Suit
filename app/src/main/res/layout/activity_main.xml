@@ -54,7 +54,7 @@
             android:layout_alignParentTop="true"
             android:gravity="center"
             android:text="@string/pemain1"
-            android:textColor="@color/black"
+            android:textColor="@color/text_color"
             android:textSize="24sp" />
 
         <RelativeLayout
@@ -91,7 +91,7 @@
 
     <ImageView
         android:id="@+id/tvVS"
-        android:layout_width="100dp"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:gravity="center"
@@ -111,7 +111,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="@string/com"
-            android:textColor="@color/black"
+            android:textColor="@color/text_color"
             android:textSize="24sp" />
 
         <RelativeLayout
