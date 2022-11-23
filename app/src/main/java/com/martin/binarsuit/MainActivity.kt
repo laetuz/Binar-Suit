@@ -6,16 +6,16 @@ import androidx.appcompat.app.AppCompatActivity
 
 
 class MainActivity : AppCompatActivity() {
-    lateinit var batu: ImageView
-    lateinit var gunting: ImageView
-    lateinit var kertas: ImageView
+    lateinit var ivRock: ImageView
+    lateinit var ivScissor: ImageView
+    lateinit var ivPaper: ImageView
 
-    lateinit var batuCom: ImageView
-    lateinit var guntingCom: ImageView
-    lateinit var kertasCom: ImageView
+    lateinit var ivRockCom: ImageView
+    lateinit var ivScissorCom: ImageView
+    lateinit var ivPaperCom: ImageView
 
-    lateinit var tvVS: ImageView
-    lateinit var imgRefresh: ImageView
+    lateinit var ivResult: ImageView
+    lateinit var ivRefresh: ImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,16 +28,16 @@ class MainActivity : AppCompatActivity() {
 
 
     fun setUpView() {
-        batu = findViewById(R.id.imgPlayerBatu)
-        gunting = findViewById(R.id.imgPlayerGunting)
-        kertas = findViewById(R.id.imgPlayerKertas)
+        ivRock = findViewById(R.id.iv_rock_player)
+        ivScissor = findViewById(R.id.iv_player_scissor)
+        ivPaper = findViewById(R.id.iv_paper_player)
 
-        batuCom = findViewById(R.id.imgComBatu)
-        guntingCom = findViewById(R.id.imgComGunting)
-        kertasCom = findViewById(R.id.imgComKertas)
+        ivRockCom = findViewById(R.id.iv_rock_com)
+        ivScissorCom = findViewById(R.id.iv_scissor_com)
+        ivPaperCom = findViewById(R.id.iv_paper_com)
 
-        tvVS = findViewById(R.id.tvVS)
-        imgRefresh = findViewById(R.id.img_refresh)
+        ivResult = findViewById(R.id.iv_result)
+        ivRefresh = findViewById(R.id.iv_refresh)
     }
 
     fun setUpAction() {
@@ -47,85 +47,85 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun clearGame() {
-        imgRefresh.setOnClickListener {
-            batu.setBackgroundResource(0)
-            gunting.setBackgroundResource(0)
-            kertas.setBackgroundResource(0)
-            batuCom.setBackgroundResource(0)
-            guntingCom.setBackgroundResource(0)
-            kertasCom.setBackgroundResource(0)
-            tvVS.setImageResource(R.drawable.img_vs)
+        ivRefresh.setOnClickListener {
+            ivRock.setBackgroundResource(0)
+            ivScissor.setBackgroundResource(0)
+            ivPaper.setBackgroundResource(0)
+            ivRockCom.setBackgroundResource(0)
+            ivScissorCom.setBackgroundResource(0)
+            ivPaperCom.setBackgroundResource(0)
+            ivResult.setImageResource(R.drawable.img_vs)
         }
     }
 
     fun batuGame() {
-        batu.setOnClickListener {
-            batu.setBackgroundResource(R.drawable.bg_suit)
-            gunting.setBackgroundResource(0)
-            kertas.setBackgroundResource(0)
+        ivRock.setOnClickListener {
+            ivRock.setBackgroundResource(R.drawable.bg_suit)
+            ivScissor.setBackgroundResource(0)
+            ivPaper.setBackgroundResource(0)
             when ((1..3).random()) {
                 1 -> {
-                    guntingCom.setBackgroundResource(R.drawable.bg_suit)
-                    tvVS.setImageResource(R.drawable.img_menang)
-                    batuCom.setBackgroundResource(0)
-                    kertasCom.setBackgroundResource(0)
+                    ivScissorCom.setBackgroundResource(R.drawable.bg_suit)
+                    ivResult.setImageResource(R.drawable.img_menang)
+                    ivRockCom.setBackgroundResource(0)
+                    ivPaperCom.setBackgroundResource(0)
                 }
                 2 -> {
-                    batuCom.setBackgroundResource(R.drawable.bg_suit)
-                    tvVS.setImageResource(R.drawable.img_draw)
-                    guntingCom.setBackgroundResource(0)
-                    kertasCom.setBackgroundResource(0)
+                    ivRockCom.setBackgroundResource(R.drawable.bg_suit)
+                    ivResult.setImageResource(R.drawable.img_draw)
+                    ivScissorCom.setBackgroundResource(0)
+                    ivPaperCom.setBackgroundResource(0)
                 }
-                else -> kertasCom.setBackgroundResource(R.drawable.bg_suit)
+                else -> ivPaperCom.setBackgroundResource(R.drawable.bg_suit)
                     .also {
-                        tvVS.setImageResource(R.drawable.img_menang2)
-                        batuCom.setBackgroundResource(0)
-                        guntingCom.setBackgroundResource(0)
+                        ivResult.setImageResource(R.drawable.img_menang2)
+                        ivRockCom.setBackgroundResource(0)
+                        ivScissorCom.setBackgroundResource(0)
                     }
             }
         }
     }
 
     fun guntingGame() {
-        gunting.setOnClickListener {
-            gunting.setBackgroundResource(R.drawable.bg_suit)
-            batu.setBackgroundResource(0)
-            kertas.setBackgroundResource(0)
+        ivScissor.setOnClickListener {
+            ivScissor.setBackgroundResource(R.drawable.bg_suit)
+            ivRock.setBackgroundResource(0)
+            ivPaper.setBackgroundResource(0)
             when ((1..3).random()) {
-                1 -> guntingCom.setBackgroundResource(R.drawable.bg_suit)
+                1 -> ivScissorCom.setBackgroundResource(R.drawable.bg_suit)
                     .also {
-                        tvVS.setImageResource(R.drawable.img_draw)
-                        batuCom.setBackgroundResource(0)
-                        kertasCom.setBackgroundResource(0)
+                        ivResult.setImageResource(R.drawable.img_draw)
+                        ivRockCom.setBackgroundResource(0)
+                        ivPaperCom.setBackgroundResource(0)
                     }
-                2 -> batuCom.setBackgroundResource(R.drawable.bg_suit)
+                2 -> ivRockCom.setBackgroundResource(R.drawable.bg_suit)
                     .also {
-                        tvVS.setImageResource(R.drawable.img_menang2)
-                        guntingCom.setBackgroundResource(0)
-                        kertasCom.setBackgroundResource(0)
+                        ivResult.setImageResource(R.drawable.img_menang2)
+                        ivScissorCom.setBackgroundResource(0)
+                        ivPaperCom.setBackgroundResource(0)
                     }
-                else -> kertasCom.setBackgroundResource(R.drawable.bg_suit)
+                else -> ivPaperCom.setBackgroundResource(R.drawable.bg_suit)
                     .also {
-                        tvVS.setImageResource(R.drawable.img_menang)
-                        batuCom.setBackgroundResource(0)
-                        guntingCom.setBackgroundResource(0)
+                        ivResult.setImageResource(R.drawable.img_menang)
+                        ivRockCom.setBackgroundResource(0)
+                        ivScissorCom.setBackgroundResource(0)
                     }
             }
         }
     }
 
     fun kertasGame() {
-        kertas.setOnClickListener {
-            kertas.setBackgroundResource(R.drawable.bg_suit)
-            batu.setBackgroundResource(0)
-            gunting.setBackgroundResource(0)
+        ivPaper.setOnClickListener {
+            ivPaper.setBackgroundResource(R.drawable.bg_suit)
+            ivRock.setBackgroundResource(0)
+            ivScissor.setBackgroundResource(0)
             when ((1..3).random()) {
-                1 -> guntingCom.setBackgroundResource(R.drawable.bg_suit)
-                    .also { tvVS.setImageResource(R.drawable.img_menang2) }
-                2 -> batuCom.setBackgroundResource(R.drawable.bg_suit)
-                    .also { tvVS.setImageResource(R.drawable.img_menang) }
-                else -> kertasCom.setBackgroundResource(R.drawable.bg_suit)
-                    .also { tvVS.setImageResource(R.drawable.img_draw) }
+                1 -> ivScissorCom.setBackgroundResource(R.drawable.bg_suit)
+                    .also { ivResult.setImageResource(R.drawable.img_menang2) }
+                2 -> ivRockCom.setBackgroundResource(R.drawable.bg_suit)
+                    .also { ivResult.setImageResource(R.drawable.img_menang) }
+                else -> ivPaperCom.setBackgroundResource(R.drawable.bg_suit)
+                    .also { ivResult.setImageResource(R.drawable.img_draw) }
             }
 
         }

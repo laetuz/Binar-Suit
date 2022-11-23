@@ -15,7 +15,7 @@
         android:layout_centerHorizontal="true">
 
         <ImageView
-            android:id="@+id/tvTitle"
+            android:id="@+id/iv_title"
             android:layout_width="200dp"
             android:layout_height="200dp"
             android:layout_marginTop="0dp"
@@ -29,7 +29,7 @@
     </RelativeLayout>
 
     <ImageView
-        android:id="@+id/img_refresh"
+        android:id="@+id/iv_refresh"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_alignParentEnd="true"
@@ -42,7 +42,7 @@
 
 
     <RelativeLayout
-        android:id="@+id/layLinear1"
+        android:id="@+id/relative_player"
         android:layout_width="120dp"
         android:layout_height="400dp"
         android:layout_alignParentStart="true"
@@ -51,12 +51,12 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/tvPlayer"
+            android:id="@+id/tv_player"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:gravity="center"
-            android:text="@string/pemain1"
+            android:text="@string/player_one"
             android:textColor="@color/text_color"
             android:textSize="24sp" />
 
@@ -66,14 +66,14 @@
             android:layout_alignParentBottom="true">
 
             <ImageView
-                android:id="@+id/imgPlayerBatu"
+                android:id="@+id/iv_rock_player"
                 android:layout_width="wrap_content"
                 android:layout_height="100dp"
                 android:layout_alignParentTop="true"
                 android:src="@drawable/batu" />
 
             <ImageView
-                android:id="@+id/imgPlayerKertas"
+                android:id="@+id/iv_paper_player"
                 android:layout_width="wrap_content"
                 android:layout_height="100dp"
                 android:layout_centerInParent="true"
@@ -81,7 +81,7 @@
                 android:src="@drawable/kertas" />
 
             <ImageView
-                android:id="@+id/imgPlayerGunting"
+                android:id="@+id/iv_player_scissor"
                 android:layout_width="wrap_content"
                 android:layout_height="100dp"
                 android:layout_alignParentBottom="true"
@@ -93,7 +93,7 @@
     </RelativeLayout>
 
     <ImageView
-        android:id="@+id/tvVS"
+        android:id="@+id/iv_result"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
@@ -101,7 +101,7 @@
         android:src="@drawable/img_vs" />
 
     <RelativeLayout
-        android:id="@+id/layLinear2"
+        android:id="@+id/relative_com"
         android:layout_width="120dp"
         android:layout_height="400dp"
         android:layout_alignParentEnd="true"
@@ -109,7 +109,7 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/tvCPU"
+            android:id="@+id/tv_com"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
@@ -123,13 +123,13 @@
             android:layout_alignParentBottom="true">
 
             <ImageView
-                android:id="@+id/imgComBatu"
+                android:id="@+id/iv_rock_com"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
                 android:src="@drawable/batu" />
 
             <ImageView
-                android:id="@+id/imgComKertas"
+                android:id="@+id/iv_paper_com"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
                 android:layout_centerInParent="true"
@@ -137,7 +137,7 @@
                 android:src="@drawable/kertas" />
 
             <ImageView
-                android:id="@+id/imgComGunting"
+                android:id="@+id/iv_scissor_com"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
                 android:layout_alignParentBottom="true"
