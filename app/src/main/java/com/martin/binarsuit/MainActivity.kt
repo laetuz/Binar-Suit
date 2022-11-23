@@ -76,12 +76,6 @@ class MainActivity : AppCompatActivity() {
                     guntingCom.setBackgroundResource(0)
                     kertasCom.setBackgroundResource(0)
                 }
-                /*batuCom.setImageResource(R.drawable.batu_selected)
-                    .also {
-                        tvVS.setImageResource(R.drawable.img_draw)
-                        guntingCom.setBackgroundResource(0)
-                        kertasCom.setBackgroundResource(0)
-                    }*/
                 else -> kertasCom.setBackgroundResource(R.drawable.bg_suit)
                     .also {
                         tvVS.setImageResource(R.drawable.img_menang2)
