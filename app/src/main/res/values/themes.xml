@@ -12,5 +12,8 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
+
+        <!--Disable default splash screen-->
+        <item name="android:windowDisablePreview">true</item>
     </style>
 </resources>
