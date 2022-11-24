@@ -1,133 +1,179 @@
 package com.martin.binarsuit
 
+import android.app.Activity
+import android.content.Context
+import android.media.MediaPlayer
+import android.os.Build
 import android.os.Bundle
-import android.widget.ImageView
+import android.os.VibrationEffect
+import android.os.Vibrator
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import com.martin.binarsuit.databinding.ActivityMainBinding
 
 
 class MainActivity : AppCompatActivity() {
-    lateinit var ivRock: ImageView
-    lateinit var ivScissor: ImageView
-    lateinit var ivPaper: ImageView
-
-    lateinit var ivRockCom: ImageView
-    lateinit var ivScissorCom: ImageView
-    lateinit var ivPaperCom: ImageView
-
-    lateinit var ivResult: ImageView
-    lateinit var ivRefresh: ImageView
+    private lateinit var binding:ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        setUpView()
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        val view = binding.root
+        setContentView(view)
         setUpAction()
         clearGame()
     }
 
-
-    fun setUpView() {
-        ivRock = findViewById(R.id.iv_rock_player)
-        ivScissor = findViewById(R.id.iv_player_scissor)
-        ivPaper = findViewById(R.id.iv_paper_player)
-
-        ivRockCom = findViewById(R.id.iv_rock_com)
-        ivScissorCom = findViewById(R.id.iv_scissor_com)
-        ivPaperCom = findViewById(R.id.iv_paper_com)
-
-        ivResult = findViewById(R.id.iv_result)
-        ivRefresh = findViewById(R.id.iv_refresh)
-    }
-
-    fun setUpAction() {
-        batuGame()
-        guntingGame()
-        kertasGame()
+    private fun setUpAction() {
+        rockGame()
+        scissorGame()
+        paperGame()
     }
 
     fun clearGame() {
-        ivRefresh.setOnClickListener {
-            ivRock.setBackgroundResource(0)
-            ivScissor.setBackgroundResource(0)
-            ivPaper.setBackgroundResource(0)
-            ivRockCom.setBackgroundResource(0)
-            ivScissorCom.setBackgroundResource(0)
-            ivPaperCom.setBackgroundResource(0)
-            ivResult.setImageResource(R.drawable.img_vs)
-        }
-    }
+        binding.apply {
+            ivRefresh.setOnClickListener {
+                sound()
+                ivRockPlayer.setBackgroundResource(0)
+                ivPlayerScissor.setBackgroundResource(0)
+                ivPaperPlayer.setBackgroundResource(0)
+                ivRockCom.setBackgroundResource(0)
+                ivScissorCom.setBackgroundResource(0)
+                ivPaperCom.setBackgroundResource(0)
+                ivResult.setImageResource(R.drawable.img_vs)
+            }
 
-    fun batuGame() {
-        ivRock.setOnClickListener {
-            ivRock.setBackgroundResource(R.drawable.bg_suit)
-            ivScissor.setBackgroundResource(0)
-            ivPaper.setBackgroundResource(0)
-            when ((1..3).random()) {
-                1 -> {
-                    ivScissorCom.setBackgroundResource(R.drawable.bg_suit)
-                    ivResult.setImageResource(R.drawable.img_menang)
-                    ivRockCom.setBackgroundResource(0)
-                    ivPaperCom.setBackgroundResource(0)
-                }
-                2 -> {
-                    ivRockCom.setBackgroundResource(R.drawable.bg_suit)
-                    ivResult.setImageResource(R.drawable.img_draw)
-                    ivScissorCom.setBackgroundResource(0)
-                    ivPaperCom.setBackgroundResource(0)
-                }
-                else -> ivPaperCom.setBackgroundResource(R.drawable.bg_suit)
-                    .also {
-                        ivResult.setImageResource(R.drawable.img_menang2)
-                        ivRockCom.setBackgroundResource(0)
-                        ivScissorCom.setBackgroundResource(0)
-                    }
+            ivRefresh.setOnLongClickListener {
+                finish()
+                startActivity(intent)
+                true
             }
         }
+
     }
 
-    fun guntingGame() {
-        ivScissor.setOnClickListener {
-            ivScissor.setBackgroundResource(R.drawable.bg_suit)
-            ivRock.setBackgroundResource(0)
-            ivPaper.setBackgroundResource(0)
-            when ((1..3).random()) {
-                1 -> ivScissorCom.setBackgroundResource(R.drawable.bg_suit)
-                    .also {
-                        ivResult.setImageResource(R.drawable.img_draw)
-                        ivRockCom.setBackgroundResource(0)
-                        ivPaperCom.setBackgroundResource(0)
-                    }
-                2 -> ivRockCom.setBackgroundResource(R.drawable.bg_suit)
-                    .also {
-                        ivResult.setImageResource(R.drawable.img_menang2)
-                        ivScissorCom.setBackgroundResource(0)
-                        ivPaperCom.setBackgroundResource(0)
-                    }
-                else -> ivPaperCom.setBackgroundResource(R.drawable.bg_suit)
-                    .also {
+    private fun rockGame() {
+        binding.apply {
+            ivRockPlayer.setOnClickListener {
+                Log.d("Batu","User memilih batu")
+                sound()
+                ivRockPlayer.setBackgroundResource(R.drawable.bg_suit)
+                ivPlayerScissor.setBackgroundResource(0)
+                ivPaperPlayer.setBackgroundResource(0)
+                ivResult.animate().apply {
+                    duration = 200
+                    rotationBy(360f)
+                }.start()
+                when ((1..3).random()) {
+                    1 -> {
+                        Log.d("ComSci","Computer memilih gunting")
+                        ivScissorCom.setBackgroundResource(R.drawable.bg_suit)
+
                         ivResult.setImageResource(R.drawable.img_menang)
                         ivRockCom.setBackgroundResource(0)
-                        ivScissorCom.setBackgroundResource(0)
+                        ivPaperCom.setBackgroundResource(0)
                     }
+                    2 -> {
+                        Log.d("ComRock","Computer memilih batu")
+                        ivRockCom.setBackgroundResource(R.drawable.bg_suit)
+                        ivResult.setImageResource(R.drawable.img_draw)
+                        ivScissorCom.setBackgroundResource(0)
+                        ivPaperCom.setBackgroundResource(0)
+                    }
+                    else -> ivPaperCom.setBackgroundResource(R.drawable.bg_suit)
+                        .also {
+                            Log.d("ComPaper","Computer memilih kertas")
+                            ivResult.setImageResource(R.drawable.img_menang2)
+                            ivRockCom.setBackgroundResource(0)
+                            ivScissorCom.setBackgroundResource(0)
+                        }
+                }
             }
         }
+
     }
 
-    fun kertasGame() {
-        ivPaper.setOnClickListener {
-            ivPaper.setBackgroundResource(R.drawable.bg_suit)
-            ivRock.setBackgroundResource(0)
-            ivScissor.setBackgroundResource(0)
-            when ((1..3).random()) {
-                1 -> ivScissorCom.setBackgroundResource(R.drawable.bg_suit)
-                    .also { ivResult.setImageResource(R.drawable.img_menang2) }
-                2 -> ivRockCom.setBackgroundResource(R.drawable.bg_suit)
-                    .also { ivResult.setImageResource(R.drawable.img_menang) }
-                else -> ivPaperCom.setBackgroundResource(R.drawable.bg_suit)
-                    .also { ivResult.setImageResource(R.drawable.img_draw) }
+    private fun scissorGame() {
+        binding.apply {
+            ivPlayerScissor.setOnClickListener {
+                sound()
+                ivPlayerScissor.setBackgroundResource(R.drawable.bg_suit)
+                ivRockPlayer.setBackgroundResource(0)
+                ivPaperPlayer.setBackgroundResource(0)
+                ivResult.animate().apply {
+                    duration = 200
+                    rotationBy(360f)
+                }.start()
+                when ((1..3).random()) {
+                    1 -> ivScissorCom.setBackgroundResource(R.drawable.bg_suit)
+                        .also {
+                            ivResult.setImageResource(R.drawable.img_draw)
+                            ivRockCom.setBackgroundResource(0)
+                            ivPaperCom.setBackgroundResource(0)
+                        }
+                    2 -> ivRockCom.setBackgroundResource(R.drawable.bg_suit)
+                        .also {
+                            ivResult.setImageResource(R.drawable.img_menang2)
+                            ivScissorCom.setBackgroundResource(0)
+                            ivPaperCom.setBackgroundResource(0)
+                        }
+                    else -> ivPaperCom.setBackgroundResource(R.drawable.bg_suit)
+                        .also {
+                            ivResult.setImageResource(R.drawable.img_menang)
+                            ivRockCom.setBackgroundResource(0)
+                            ivScissorCom.setBackgroundResource(0)
+                        }
+                }
             }
+        }
 
+    }
+
+    private fun paperGame() {
+        binding.apply {
+            ivPaperPlayer.setOnClickListener {
+                sound()
+                ivPaperPlayer.setBackgroundResource(R.drawable.bg_suit)
+                ivRockPlayer.setBackgroundResource(0)
+                ivPlayerScissor.setBackgroundResource(0)
+                ivResult.animate().apply {
+                    duration = 200
+                    rotationBy(360f)
+                }.start()
+                when ((1..3).random()) {
+                    1 -> ivScissorCom.setBackgroundResource(R.drawable.bg_suit)
+                        .also { ivResult.setImageResource(R.drawable.img_menang2)
+                            ivRockCom.setBackgroundResource(0)
+                            ivPaperCom.setBackgroundResource(0)}
+                    2 -> ivRockCom.setBackgroundResource(R.drawable.bg_suit)
+                        .also { ivResult.setImageResource(R.drawable.img_menang)
+                            ivScissorCom.setBackgroundResource(0)
+                            ivPaperCom.setBackgroundResource(0)}
+                    else -> ivPaperCom.setBackgroundResource(R.drawable.bg_suit)
+                        .also { ivResult.setImageResource(R.drawable.img_draw)
+                            ivRockCom.setBackgroundResource(0)
+                            ivScissorCom.setBackgroundResource(0)}
+                }
+
+            }
+        }
+
+    }
+
+    private fun sound(){
+        val mediaPlayer:MediaPlayer= MediaPlayer.create(this,R.raw.sound_pop)
+        mediaPlayer.start()
+        vibratePhone()
+    }
+
+    private fun Activity.vibratePhone() {
+        val vibrator = this.getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
+        if (Build.VERSION.SDK_INT >= 26) {
+            vibrator.vibrate(VibrationEffect.createOneShot(10, VibrationEffect.DEFAULT_AMPLITUDE))
+        } else {
+            vibrator.vibrate(200)
         }
     }
 }
