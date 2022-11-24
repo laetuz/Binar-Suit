@@ -5,7 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+
+    >
 
     <RelativeLayout
         android:layout_width="wrap_content"
@@ -55,6 +57,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
+            android:fontFamily="@font/comic_sans"
             android:gravity="center"
             android:text="@string/player_one"
             android:textColor="@color/text_color"
@@ -67,14 +70,14 @@
 
             <ImageView
                 android:id="@+id/iv_rock_player"
-                android:layout_width="wrap_content"
+                android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_alignParentTop="true"
                 android:src="@drawable/batu" />
 
             <ImageView
                 android:id="@+id/iv_paper_player"
-                android:layout_width="wrap_content"
+                android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_centerInParent="true"
                 android:layout_marginTop="20dp"
@@ -82,7 +85,7 @@
 
             <ImageView
                 android:id="@+id/iv_player_scissor"
-                android:layout_width="wrap_content"
+                android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_alignParentBottom="true"
                 android:layout_marginTop="20dp"
@@ -112,6 +115,7 @@
             android:id="@+id/tv_com"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/comic_sans"
             android:gravity="center"
             android:text="@string/com"
             android:textColor="@color/text_color"
@@ -124,13 +128,13 @@
 
             <ImageView
                 android:id="@+id/iv_rock_com"
-                android:layout_width="match_parent"
+                android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:src="@drawable/batu" />
 
             <ImageView
                 android:id="@+id/iv_paper_com"
-                android:layout_width="match_parent"
+                android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_centerInParent="true"
                 android:layout_marginTop="20dp"
@@ -138,7 +142,7 @@
 
             <ImageView
                 android:id="@+id/iv_scissor_com"
-                android:layout_width="match_parent"
+                android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_alignParentBottom="true"
                 android:layout_marginTop="20dp"
