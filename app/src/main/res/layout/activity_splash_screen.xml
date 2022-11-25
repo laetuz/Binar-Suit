@@ -7,11 +7,11 @@
     tools:context=".SplashScreen">
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/iv_logo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
         app:srcCompat="@drawable/suit_logo"
         tools:layout_editor_absoluteX="-16dp"
-        tools:layout_editor_absoluteY="145dp"
-        android:layout_centerInParent="true"/>
+        tools:layout_editor_absoluteY="145dp" />
 </RelativeLayout>
