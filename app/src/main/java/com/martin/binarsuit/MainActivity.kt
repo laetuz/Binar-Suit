@@ -1,6 +1,7 @@
 package com.martin.binarsuit
 
 import android.app.Activity
+import android.app.AlertDialog
 import android.content.Context
 import android.media.MediaPlayer
 import android.os.Bundle
@@ -9,10 +10,12 @@ import android.os.Vibrator
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.martin.binarsuit.databinding.ActivityMainBinding
+import com.martin.binarsuit.databinding.DialogViewBinding
 
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
+    private lateinit var bindingDialog: DialogViewBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,19 +24,19 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         val view = binding.root
 
-        setContentView(view) // 1. View ViewBinding components, UI logic
-        setUpAction() // 2. Calling game logic
-        clearGame() // 3. Clearing the game logic from the UI logic
+        setContentView(view) // 1. UI logic
+        setUpAction() // 2. Game logic
+        clearGame() // 3. Restarting the game logic. Me-restart logic game.
     }
 
-    //Main logic for the game
+    //Main logic for the game. Logic utama untuk game.
     private fun setUpAction() {
         rockGame()
         scissorGame()
         paperGame()
     }
 
-    //Called if refresh button is clicked
+    //Called if refresh button is clicked. Dipanggil ketika button Refresh diklik.
     private fun clearGame() {
         binding.apply {
             // 1. Click the refresh button to restart the game logic
@@ -66,7 +69,7 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    //Called if player picked rock
+    //Called if player picked rock. Dipanggil ketika player memilih batu.
     private fun rockGame() {
         binding.apply {
             ivRockPlayer.setOnClickListener {
@@ -108,7 +111,7 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    //Called if player picked scissor
+    //Called if player picked scissor. Dipanggil ketika player memilih gunting.
     private fun scissorGame() {
         binding.apply {
             ivPlayerScissor.setOnClickListener {
@@ -149,7 +152,7 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    //Called if player picked paper
+    //Called if player picked paper. Dipanggil ketika player memilih kertas.
     private fun paperGame() {
         binding.apply {
             ivPaperPlayer.setOnClickListener {
@@ -191,17 +194,32 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    //For Sound on click
+    //For Sound on click. Untuk efek suara pada onClick.
     private fun sound() {
         val mediaPlayer: MediaPlayer = MediaPlayer.create(this, R.raw.sound_pop)
         mediaPlayer.start()
         vibratePhone()
     }
 
-    //For Vibration on click
+    //For Vibration on click. Untuk efek vibrasi pada onClick.
     private fun Activity.vibratePhone() {
         val vibrator = this.getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
         vibrator.vibrate(VibrationEffect.createOneShot(10, VibrationEffect.DEFAULT_AMPLITUDE))
+    }
+
+    //Display dialog. Menampilkan Dialog.
+    override fun onBackPressed() {
+        bindingDialog = DialogViewBinding.inflate(layoutInflater)
+        val view = bindingDialog.root
+        val builder = AlertDialog.Builder(this@MainActivity)
+        builder.setView(view)
+
+        val dialog = builder.create()
+        dialog.show()
+        dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
+
+        bindingDialog.btnBack.setOnClickListener { dialog.hide() }
+        bindingDialog.btnExit.setOnClickListener { finish() }
     }
 }
 
