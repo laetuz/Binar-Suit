@@ -36,7 +36,12 @@ class MainActivity : AppCompatActivity() {
     //Called if refresh button is clicked
     private fun clearGame() {
         binding.apply {
+            // 1. Click the refresh button to restart the game logic
             ivRefresh.setOnClickListener {
+                Log.d(
+                    "Refresh-click",
+                    "User clicked the refresh button, game logic restarted from the UI ViewBinding; setting all ImageView resource to default."
+                )
                 sound()
                 ivRockPlayer.setBackgroundResource(0)
                 ivPlayerScissor.setBackgroundResource(0)
@@ -47,7 +52,12 @@ class MainActivity : AppCompatActivity() {
                 ivResult.setImageResource(R.drawable.img_vs)
             }
 
+            // 2. Long click refresh button to restart the activity
             ivRefresh.setOnLongClickListener {
+                Log.d(
+                    "Refresh-long-click",
+                    "User long clicked the refresh button, activity restarted."
+                )
                 finish()
                 startActivity(intent)
                 true
@@ -102,6 +112,7 @@ class MainActivity : AppCompatActivity() {
     private fun scissorGame() {
         binding.apply {
             ivPlayerScissor.setOnClickListener {
+                Log.d("Gunting", "User memilih gunting")
                 sound()
                 ivPlayerScissor.setBackgroundResource(R.drawable.bg_suit)
                 ivRockPlayer.setBackgroundResource(0)
@@ -113,18 +124,21 @@ class MainActivity : AppCompatActivity() {
                 when ((1..3).random()) {
                     1 -> ivScissorCom.setBackgroundResource(R.drawable.bg_suit)
                         .also {
+                            Log.d("Comp-Scissor", "Computer picked scissor")
                             ivResult.setImageResource(R.drawable.img_draw)
                             ivRockCom.setBackgroundResource(0)
                             ivPaperCom.setBackgroundResource(0)
                         }
                     2 -> ivRockCom.setBackgroundResource(R.drawable.bg_suit)
                         .also {
+                            Log.d("Comp-Rock", "Computer picked rock")
                             ivResult.setImageResource(R.drawable.img_menang2)
                             ivScissorCom.setBackgroundResource(0)
                             ivPaperCom.setBackgroundResource(0)
                         }
                     else -> ivPaperCom.setBackgroundResource(R.drawable.bg_suit)
                         .also {
+                            Log.d("Comp-Paper", "Computer picked paper")
                             ivResult.setImageResource(R.drawable.img_menang)
                             ivRockCom.setBackgroundResource(0)
                             ivScissorCom.setBackgroundResource(0)
@@ -139,6 +153,7 @@ class MainActivity : AppCompatActivity() {
     private fun paperGame() {
         binding.apply {
             ivPaperPlayer.setOnClickListener {
+                Log.d("Kertas", "User memilih kertas")
                 sound()
                 ivPaperPlayer.setBackgroundResource(R.drawable.bg_suit)
                 ivRockPlayer.setBackgroundResource(0)
@@ -150,18 +165,21 @@ class MainActivity : AppCompatActivity() {
                 when ((1..3).random()) {
                     1 -> ivScissorCom.setBackgroundResource(R.drawable.bg_suit)
                         .also {
+                            Log.d("Comp-Scissor", "Computer picked scissor")
                             ivResult.setImageResource(R.drawable.img_menang2)
                             ivRockCom.setBackgroundResource(0)
                             ivPaperCom.setBackgroundResource(0)
                         }
                     2 -> ivRockCom.setBackgroundResource(R.drawable.bg_suit)
                         .also {
+                            Log.d("Comp-Rock", "Computer picked rock")
                             ivResult.setImageResource(R.drawable.img_menang)
                             ivScissorCom.setBackgroundResource(0)
                             ivPaperCom.setBackgroundResource(0)
                         }
                     else -> ivPaperCom.setBackgroundResource(R.drawable.bg_suit)
                         .also {
+                            Log.d("Comp-Paper", "Computer picked paper")
                             ivResult.setImageResource(R.drawable.img_draw)
                             ivRockCom.setBackgroundResource(0)
                             ivScissorCom.setBackgroundResource(0)
