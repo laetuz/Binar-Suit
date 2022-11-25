@@ -118,8 +118,8 @@ class MainActivity : AppCompatActivity() {
                 ivRockPlayer.setBackgroundResource(0)
                 ivPaperPlayer.setBackgroundResource(0)
                 ivResult.animate().apply {
-                    duration = 200
                     rotationBy(360f)
+                    duration = 200
                 }.start()
                 when ((1..3).random()) {
                     1 -> ivScissorCom.setBackgroundResource(R.drawable.bg_suit)

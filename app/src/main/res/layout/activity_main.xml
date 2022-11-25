@@ -24,7 +24,6 @@
             android:rotation="-10"
             android:gravity="center"
             android:layout_alignParentTop="true"
-            android:text="@string/title"
             android:textColor="@color/black"
             android:src="@drawable/suit_logo"
             android:textSize="24sp" />
@@ -117,7 +116,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/comic_sans"
             android:gravity="center"
-            android:text="@string/com"
+            android:text="@string/tv_com"
             android:textColor="@color/text_color"
             android:textSize="24sp" />
 
