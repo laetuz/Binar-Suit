@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Binar Suit</string>
-    <string name="title">Kertas\nGunting\nBatu</string>
     <string name="player_one">Pemain 1</string>
-    <string name="com">COM</string>
-    <string name="game">AYO MAIN!</string>
+    <string name="tv_com">COM</string>
+    <string name="btn_game">AYO MAIN!</string>
+    <string name="tv_welcome">Welcome to Gunting Batu Kertas game. This game was developed for Binar Challenge submission by Ryo Martin.\n- 26 November 2022 -</string>
 </resources>
