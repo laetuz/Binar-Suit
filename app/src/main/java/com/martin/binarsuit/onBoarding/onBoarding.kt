@@ -1,33 +1,36 @@
-package com.martin.binarsuit
+package com.martin.binarsuit.onBoarding
 
 import android.app.AlertDialog
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.fragment.app.Fragment
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import com.bumptech.glide.Glide
-import com.martin.binarsuit.databinding.ActivityOnBoardingBinding
+import com.martin.binarsuit.MainActivity
+import com.martin.binarsuit.R
 import com.martin.binarsuit.databinding.DialogViewBinding
-import kotlinx.android.synthetic.main.activity_on_boarding.*
+import com.martin.binarsuit.databinding.FragmentOnBoardingBinding
 
-class OnBoarding : AppCompatActivity() {
-    private lateinit var binding: ActivityOnBoardingBinding
-    private lateinit var bindingDialog: DialogViewBinding
+class onBoarding : Fragment(R.layout.fragment_on_boarding) {
+    private lateinit var binding: FragmentOnBoardingBinding
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        binding = FragmentOnBoardingBinding.inflate(layoutInflater)
+        // Inflate the layout for this fragment
 
-        binding = ActivityOnBoardingBinding.inflate(layoutInflater)
-        val view = binding.root
-        setContentView(view)
+
         glideView()
-        binding.btnGame.setOnClickListener {
-            Intent(this, MainActivity::class.java).also { startActivity(it) }
-                .also { finishAffinity() }
-        }
+        return binding.root
     }
 
+
     //Display dialog. Menampilkan Dialog.
-    override fun onBackPressed() {
+    /*fun onBackPressed() {
         bindingDialog = DialogViewBinding.inflate(layoutInflater)
         val view = bindingDialog.root
         val builder = AlertDialog.Builder(this@OnBoarding)
@@ -39,12 +42,12 @@ class OnBoarding : AppCompatActivity() {
 
         bindingDialog.btnBack.setOnClickListener { dialog.hide() }
         bindingDialog.btnExit.setOnClickListener { finish() }
-    }
+    }*/
 
     //Load Image
-    fun glideView(){
+    fun glideView() {
         binding.apply {
-            Glide.with(this@OnBoarding)
+            Glide.with(this@onBoarding)
                 .load("https://st2.depositphotos.com/1340907/8260/v/450/depositphotos_82602614-stock-illustration-rock-paper-scissors.jpg")
                 .fitCenter()
                 .into(imageView)
