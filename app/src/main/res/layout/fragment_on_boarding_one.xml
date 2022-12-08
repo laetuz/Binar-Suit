@@ -1,16 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".onBoarding.onBoardingOne">
+    tools:context=".onBoarding.OnBoardingOne"
+    android:background="@color/white">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:id="@+id/frOne"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/teal_200"
-        android:text="@string/hello_blank_fragment" />
 
-</FrameLayout>
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="300dp"
+        android:layout_marginBottom="50dp"
+        android:layout_centerInParent="true">
+
+        <ImageView
+            android:id="@+id/iv_ob_one"
+            android:layout_width="250dp"
+            android:layout_height="250dp"
+            android:src="@drawable/landing_page_one"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentTop="true"/>
+        <TextView
+        android:id="@+id/tv_ob_one"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/comic_sans"
+            android:gravity="center"
+        android:text="@string/onboarding_one"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="normal"
+            android:layout_alignParentBottom="true"/>
+    </RelativeLayout>
+
+</RelativeLayout>
