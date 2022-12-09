@@ -6,10 +6,20 @@
 
     <RelativeLayout
         android:layout_width="300dp"
-        android:layout_height="125dp"
+        android:layout_height="200dp"
         android:layout_centerInParent="true"
         android:background="@drawable/bg_dialog"
         tools:ignore="UselessParent">
+
+        <TextView
+            android:id="@+id/tv_result"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/result_result"
+            android:textColor="@color/white"
+            android:fontFamily="@font/comic_sans"
+            android:textSize="24sp"/>
 
         <TextView
             android:id="@+id/tv_title"
@@ -17,9 +27,12 @@
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
-            android:layout_margin="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp"
             android:fontFamily="@font/sf_pro"
-            android:text="@string/tv_dialog"
+            android:text="@string/title_result"
             android:textColor="@color/white"
             android:textSize="20sp"
             android:textStyle="bold" />
@@ -37,7 +50,9 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
                 android:background="@drawable/bg_dialog_btn"
-                android:text="@string/btn_dialog_tidak"
+                android:text="@string/btn_result_menu"
+                android:textAllCaps="false"
+                android:paddingHorizontal="10dp"
                 android:textColor="@color/black" />
 
             <androidx.appcompat.widget.AppCompatButton
@@ -46,7 +61,8 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:background="@drawable/bg_dialog_btn"
-                android:text="@string/btn_dialog_ya"
+                android:text="@string/btn_result_restart"
+                android:textAllCaps="false"
                 android:textColor="@color/black" />
         </RelativeLayout>
 

@@ -1,5 +1,6 @@
 package com.martin.binarsuit
 
+import android.app.AlertDialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -32,14 +33,17 @@ class OnBoardingParent : AppCompatActivity() {
         }
     }
 
-    /*private fun button() {
-        binding.apply {
-            button.setOnClickListener {
-                Intent(this@OnBoardingParent, MainActivity::class.java).also { startActivity(it) }
-                    .also {
-                        finishAffinity()
-                    }
-            }
-        }
-    }*/
+    override fun onBackPressed() {
+        bindingDialog = DialogViewBinding.inflate(layoutInflater)
+        val view = bindingDialog.root
+        val builder = AlertDialog.Builder(this@OnBoardingParent)
+        builder.setView(view)
+
+        val dialog = builder.create()
+        dialog.show()
+        dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
+
+        bindingDialog.btnBack.setOnClickListener { dialog.hide() }
+        bindingDialog.btnExit.setOnClickListener { finish() }
+    }
 }

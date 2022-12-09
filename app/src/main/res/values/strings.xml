@@ -9,5 +9,11 @@
     <string name="btn_dialog_tidak">Tidak</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="onboarding_one">Bermain suit melawan sesama pemain</string>
+    <string name="onBoarding_one">Bermain suit melawan sesama pemain.</string>
+    <string name="onBoarding_two">Bermain suit melawan komputer.</string>
+    <!--dialog_result-->
+    <string name="title_result">Hasil Permainan</string>
+    <string name="result_result">Menang!</string>
+    <string name="btn_result_restart">Main lagi</string>
+    <string name="btn_result_menu">Kembali ke menu</string>
 </resources>
