@@ -45,7 +45,7 @@ class onBoarding : Fragment(R.layout.fragment_on_boarding) {
     }*/
 
     //Load Image
-    fun glideView() {
+    private fun glideView() {
         binding.apply {
             Glide.with(this@onBoarding)
                 .load("https://st2.depositphotos.com/1340907/8260/v/450/depositphotos_82602614-stock-illustration-rock-paper-scissors.jpg")

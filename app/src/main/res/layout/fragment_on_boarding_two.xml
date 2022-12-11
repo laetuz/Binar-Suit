@@ -3,44 +3,46 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".onBoarding.OnBoardingTwo"
-    android:background="@color/white">
+    android:background="@color/white"
+    tools:context=".onBoarding.OnBoardingTwo">
 
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="300dp"
-        android:layout_marginBottom="50dp"
-        android:layout_centerInParent="true">
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="50dp">
 
         <ImageView
             android:id="@+id/iv_ob_two"
             android:layout_width="250dp"
             android:layout_height="250dp"
-            android:src="@drawable/landing_page_two"
+            android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
-            android:layout_alignParentTop="true"/>
+            android:src="@drawable/landing_page_two" />
+
         <TextView
             android:id="@+id/tv_ob_two"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginHorizontal="10dp"
             android:fontFamily="@font/comic_sans"
             android:gravity="center"
             android:text="@string/onBoarding_two"
             android:textColor="@color/black"
             android:textSize="20sp"
-            android:textStyle="normal"
-            android:layout_alignParentBottom="true"/>
+            android:textStyle="normal" />
     </RelativeLayout>
 
     <ImageButton
         android:id="@+id/button_next"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:layout_marginStart="14dp"
         android:layout_marginTop="14dp"
-        android:layout_marginEnd="14dp"
+        android:layout_marginEnd="22dp"
         android:layout_marginBottom="14dp"
         android:background="@color/white"
         android:src="@drawable/ic_baseline_navigate_next" />

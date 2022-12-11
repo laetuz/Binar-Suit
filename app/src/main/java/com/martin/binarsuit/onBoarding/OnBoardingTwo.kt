@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.Toast
+import com.martin.binarsuit.LoginActivity
 import com.martin.binarsuit.MainActivity
 import com.martin.binarsuit.R
 import com.martin.binarsuit.databinding.FragmentOnBoardingTwoBinding
@@ -20,7 +21,7 @@ class OnBoardingTwo : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         button_next.setOnClickListener {
-            Intent(context, MainActivity::class.java).also { startActivity(it) }.also {
+            Intent(context, LoginActivity::class.java).also { startActivity(it) }.also {
                 activity?.finishAffinity()
             }
         }
