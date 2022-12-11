@@ -7,4 +7,18 @@
     <string name="tv_dialog">Yakin ingin keluar?</string>
     <string name="btn_dialog_ya">Ya</string>
     <string name="btn_dialog_tidak">Tidak</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="onBoarding_one">Bermain suit melawan sesama pemain.</string>
+    <string name="onBoarding_two">Bermain suit melawan komputer.</string>
+    <!--dialog_result-->
+    <string name="title_result">Hasil Permainan</string>
+    <string name="result_result"> MENANG!</string>
+    <string name="btn_result_restart">Main lagi</string>
+    <string name="btn_result_menu">Kembali ke menu</string>
+    <string name="result_draw">Draw!</string>
+    <string name="result_win_com">CPU\nMENANG!</string>
+    <string name="result_win_two">Pemain 2\nMENANG!</string>
+    <!--Login-->
+    <string name="title_login">Tuliskan namamu di bawah</string>
 </resources>

@@ -1,13 +1,25 @@
 package com.martin.binarsuit
 
+import android.Manifest
+import android.annotation.SuppressLint
+import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
+import android.content.pm.PackageManager
+import android.location.Geocoder
+import android.location.Location
+import android.location.LocationListener
+import android.location.LocationManager
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.widget.ImageView
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
+import java.util.*
 
 class SplashScreen : AppCompatActivity() {
+    private var locationManager: LocationManager? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash_screen)
@@ -28,7 +40,7 @@ class SplashScreen : AppCompatActivity() {
     // Delaying the splash screen timeout and navigating to the OnBoarding activity
     private fun delayHandler() {
         Handler(Looper.getMainLooper()).postDelayed({
-            Intent(this@SplashScreen, OnBoarding::class.java).also { startActivity(it) }
+            Intent(this@SplashScreen, OnBoardingParent::class.java).also { startActivity(it) }
             finish()
         }, 1000)
     }

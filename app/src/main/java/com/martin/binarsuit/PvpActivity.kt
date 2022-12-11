@@ -9,23 +9,25 @@ import android.os.Bundle
 import android.os.VibrationEffect
 import android.os.Vibrator
 import android.util.Log
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import com.martin.binarsuit.databinding.ActivityMainBinding
+import androidx.core.view.isGone
+import androidx.core.view.isVisible
+import com.martin.binarsuit.databinding.ActivityPvpBinding
 import com.martin.binarsuit.databinding.DialogResultBinding
 import com.martin.binarsuit.databinding.DialogViewBinding
-import org.w3c.dom.Text
 
 
-class MainActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityMainBinding
+class PvpActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityPvpBinding
     private lateinit var bindingDialog: DialogViewBinding
     private lateinit var bindingResultBinding: DialogResultBinding
-    private lateinit var nameLogin:String
+    private lateinit var nameLogin: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        binding = ActivityMainBinding.inflate(layoutInflater)
+        binding = ActivityPvpBinding.inflate(layoutInflater)
         val view = binding.root
 
         //getExtras
@@ -43,7 +45,7 @@ class MainActivity : AppCompatActivity() {
         scissorGame()
         paperGame()
         binding.ivClose.setOnClickListener {
-            val intentMain = Intent(this@MainActivity, MenuActivity::class.java)
+            val intentMain = Intent(this@PvpActivity, MenuActivity::class.java)
             intentMain.putExtra("name", nameLogin)
             startActivity(intentMain)
             finishAffinity()
@@ -104,40 +106,42 @@ class MainActivity : AppCompatActivity() {
                     duration = 200
                     rotationBy(360f)
                 }.start()
-                when ((1..3).random()) {
-                    1 -> {
-                        Log.d("ComSci", "Computer memilih gunting")
-                        ivScissorCom.setBackgroundResource(R.drawable.bg_suit)
-
-                        ivResult.setImageResource(R.drawable.img_menang)
-                        ivRockCom.setBackgroundResource(0)
-                        ivPaperCom.setBackgroundResource(0)
-                        disableGame()
-                        dialogGame()
-                        bindingResultBinding.tvResult.text = buildString {
-                            append("$nameLogin\nMENANG!")
-                        }
+                ivCensor.visibility = View.VISIBLE
+                ivScissorCom.setOnClickListener {
+                    ivScissorCom.setBackgroundResource(R.drawable.bg_suit)
+                    Log.d("Play", "Player two memilih gunting")
+                    ivResult.setImageResource(R.drawable.img_menang)
+                    ivRockCom.setBackgroundResource(0)
+                    ivPaperCom.setBackgroundResource(0)
+                    disableGame()
+                    dialogGame()
+                    ivCensor.visibility = View.GONE
+                    bindingResultBinding.tvResult.text = buildString {
+                        append("$nameLogin\nMENANG!")
                     }
-                    2 -> {
-                        Log.d("ComRock", "Computer memilih batu")
-                        ivRockCom.setBackgroundResource(R.drawable.bg_suit)
-                        ivResult.setImageResource(R.drawable.img_draw)
-                        ivScissorCom.setBackgroundResource(0)
-                        ivPaperCom.setBackgroundResource(0)
-                        disableGame()
-                        dialogGame()
-                        bindingResultBinding.tvResult.setText(R.string.result_draw)
-                    }
-                    else -> ivPaperCom.setBackgroundResource(R.drawable.bg_suit)
-                        .also {
-                            Log.d("ComPaper", "Computer memilih kertas")
+                }
+                ivPaperCom.setOnClickListener {
+                    ivPaperCom.setBackgroundResource(R.drawable.bg_suit).also {
+                            Log.d("ComPaper", "Player two memilih kertas")
                             ivResult.setImageResource(R.drawable.img_menang2)
                             ivRockCom.setBackgroundResource(0)
                             ivScissorCom.setBackgroundResource(0)
                             disableGame()
                             dialogGame()
-                            bindingResultBinding.tvResult.setText(R.string.result_win_com)
+                            ivCensor.visibility = View.GONE
+                            bindingResultBinding.tvResult.setText(R.string.result_win_two)
                         }
+                }
+                ivRockCom.setOnClickListener {
+                    Log.d("ComRock", "Computer memilih batu")
+                    ivRockCom.setBackgroundResource(R.drawable.bg_suit)
+                    ivResult.setImageResource(R.drawable.img_draw)
+                    ivScissorCom.setBackgroundResource(0)
+                    ivPaperCom.setBackgroundResource(0)
+                    disableGame()
+                    dialogGame()
+                    ivCensor.visibility = View.GONE
+                    bindingResultBinding.tvResult.setText(R.string.result_draw)
                 }
             }
         }
@@ -157,39 +161,45 @@ class MainActivity : AppCompatActivity() {
                     rotationBy(360f)
                     duration = 200
                 }.start()
-                when ((1..3).random()) {
-                    1 -> ivScissorCom.setBackgroundResource(R.drawable.bg_suit)
-                        .also {
+                ivCensor.visibility = View.VISIBLE
+                ivScissorCom.setOnClickListener {
+                    ivScissorCom.setBackgroundResource(R.drawable.bg_suit).also {
                             Log.d("Comp-Scissor", "Computer picked scissor")
                             ivResult.setImageResource(R.drawable.img_draw)
                             ivRockCom.setBackgroundResource(0)
                             ivPaperCom.setBackgroundResource(0)
                             disableGame()
                             dialogGame()
+                            ivCensor.visibility = View.GONE
                             bindingResultBinding.tvResult.setText(R.string.result_draw)
                         }
-                    2 -> ivRockCom.setBackgroundResource(R.drawable.bg_suit)
-                        .also {
-                            Log.d("Comp-Rock", "Computer picked rock")
-                            ivResult.setImageResource(R.drawable.img_menang2)
-                            ivScissorCom.setBackgroundResource(0)
-                            ivPaperCom.setBackgroundResource(0)
-                            disableGame()
-                            dialogGame()
-                            bindingResultBinding.tvResult.setText(R.string.result_win_com)
-                        }
-                    else -> ivPaperCom.setBackgroundResource(R.drawable.bg_suit)
-                        .also {
-                            Log.d("Comp-Paper", "Computer picked paper")
-                            ivResult.setImageResource(R.drawable.img_menang)
-                            ivRockCom.setBackgroundResource(0)
-                            ivScissorCom.setBackgroundResource(0)
-                            disableGame()
-                            dialogGame()
-                            bindingResultBinding.tvResult.text = buildString {
-                                append("$nameLogin\nMENANG!")
+                    ivRockCom.setOnClickListener {
+                        ivRockCom.setBackgroundResource(R.drawable.bg_suit).also {
+                                Log.d("Comp-Rock", "Computer picked rock")
+                                ivResult.setImageResource(R.drawable.img_menang2)
+                                ivScissorCom.setBackgroundResource(0)
+                                ivPaperCom.setBackgroundResource(0)
+                                disableGame()
+                                dialogGame()
+                                ivCensor.visibility = View.GONE
+                                bindingResultBinding.tvResult.setText(R.string.result_win_two)
                             }
+                        ivPaperCom.setOnClickListener {
+                            ivPaperCom.setBackgroundResource(R.drawable.bg_suit).also {
+                                    Log.d("Comp-Paper", "Computer picked paper")
+                                    ivResult.setImageResource(R.drawable.img_menang)
+                                    ivRockCom.setBackgroundResource(0)
+                                    ivScissorCom.setBackgroundResource(0)
+                                    disableGame()
+                                    dialogGame()
+                                    ivCensor.visibility = View.GONE
+                                    bindingResultBinding.tvResult.text = buildString {
+                                        append("$nameLogin\nMENANG!")
+                                    }
+                                }
                         }
+
+                    }
                 }
             }
         }
@@ -209,41 +219,45 @@ class MainActivity : AppCompatActivity() {
                     duration = 200
                     rotationBy(360f)
                 }.start()
-                when ((1..3).random()) {
-                    1 -> ivScissorCom.setBackgroundResource(R.drawable.bg_suit)
-                        .also {
+                ivCensor.visibility = View.VISIBLE
+                ivScissorCom.setOnClickListener {
+                    ivScissorCom.setBackgroundResource(R.drawable.bg_suit).also {
                             Log.d("Comp-Scissor", "Computer picked scissor")
                             ivResult.setImageResource(R.drawable.img_menang2)
                             ivRockCom.setBackgroundResource(0)
                             ivPaperCom.setBackgroundResource(0)
                             disableGame()
                             dialogGame()
-                            bindingResultBinding.tvResult.setText(R.string.result_win_com)
+                            ivCensor.visibility = View.GONE
+                            bindingResultBinding.tvResult.setText(R.string.result_win_two)
                         }
-                    2 -> ivRockCom.setBackgroundResource(R.drawable.bg_suit)
-                        .also {
+                }
+                ivRockCom.setOnClickListener {
+                    ivRockCom.setBackgroundResource(R.drawable.bg_suit).also {
                             Log.d("Comp-Rock", "Computer picked rock")
                             ivResult.setImageResource(R.drawable.img_menang)
                             ivScissorCom.setBackgroundResource(0)
                             ivPaperCom.setBackgroundResource(0)
                             disableGame()
                             dialogGame()
+                            ivCensor.visibility = View.GONE
                             bindingResultBinding.tvResult.text = buildString {
                                 append("$nameLogin\nMENANG!")
                             }
                         }
-                    else -> ivPaperCom.setBackgroundResource(R.drawable.bg_suit)
-                        .also {
+                }
+                ivPaperCom.setOnClickListener {
+                    ivPaperCom.setBackgroundResource(R.drawable.bg_suit).also {
                             Log.d("Comp-Paper", "Computer picked paper")
                             ivResult.setImageResource(R.drawable.img_draw)
                             ivRockCom.setBackgroundResource(0)
                             ivScissorCom.setBackgroundResource(0)
                             disableGame()
                             dialogGame()
+                            ivCensor.visibility = View.GONE
                             bindingResultBinding.tvResult.setText(R.string.result_draw)
                         }
                 }
-
             }
         }
 
@@ -266,7 +280,7 @@ class MainActivity : AppCompatActivity() {
     override fun onBackPressed() {
         bindingDialog = DialogViewBinding.inflate(layoutInflater)
         val view = bindingDialog.root
-        val builder = AlertDialog.Builder(this@MainActivity)
+        val builder = AlertDialog.Builder(this@PvpActivity)
         builder.setView(view)
 
         val dialog = builder.create()
@@ -281,7 +295,7 @@ class MainActivity : AppCompatActivity() {
     private fun dialogGame() {
         bindingResultBinding = DialogResultBinding.inflate(layoutInflater)
         val view = bindingResultBinding.root
-        val builder = AlertDialog.Builder(this@MainActivity)
+        val builder = AlertDialog.Builder(this@PvpActivity)
         builder.setView(view)
 
         //val intentThis:Intent = (this@MainActivity)
@@ -292,7 +306,7 @@ class MainActivity : AppCompatActivity() {
 
         //Button Kembali ke menu
         bindingResultBinding.btnBack.setOnClickListener {
-            val intentMain = Intent(this@MainActivity, MenuActivity::class.java)
+            val intentMain = Intent(this@PvpActivity, MenuActivity::class.java)
             intentMain.putExtra("name", nameLogin)
             startActivity(intentMain)
             finishAffinity()
