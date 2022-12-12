@@ -290,14 +290,14 @@ class MainActivity : AppCompatActivity() {
         dialog.show()
         dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
 
-        //Button Kembali ke menu
+        //Button 'Kembali ke menu'
         bindingResultBinding.btnBack.setOnClickListener {
             val intentMain = Intent(this@MainActivity, MenuActivity::class.java)
             intentMain.putExtra("name", nameLogin)
             startActivity(intentMain)
             finishAffinity()
         }
-        //Button Main lagi
+        //Button 'Main lagi'
         bindingResultBinding.btnExit.setOnClickListener {
             dialog.hide()
             binding.apply {
