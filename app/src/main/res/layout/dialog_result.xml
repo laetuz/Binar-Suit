@@ -8,7 +8,7 @@
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:background="@color/white"
+        android:background="@drawable/bg_dialog_result"
         tools:ignore="UselessParent">
 
         <TextView
@@ -61,7 +61,7 @@
                 android:layout_marginTop="5dp"
                 android:layout_marginEnd="5dp"
                 android:layout_marginBottom="5dp"
-                android:background="@drawable/bg_dialog_btn"
+                android:background="@drawable/bg_dialog_btn_back"
                 android:fontFamily="@font/comic_sans"
                 android:text="@string/btn_result_menu"
                 android:textAllCaps="false"
@@ -76,11 +76,11 @@
                 android:layout_marginTop="5dp"
                 android:layout_marginEnd="5dp"
                 android:layout_marginBottom="5dp"
-                android:background="@drawable/bg_dialog_btn"
+                android:background="@drawable/bg_dialog_btn_play"
                 android:fontFamily="@font/comic_sans"
                 android:text="@string/btn_result_restart"
                 android:textAllCaps="false"
-                android:textColor="@color/black" />
+                android:textColor="@color/white" />
         </RelativeLayout>
 
     </RelativeLayout>
