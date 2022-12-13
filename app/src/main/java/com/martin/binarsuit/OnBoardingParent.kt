@@ -4,7 +4,12 @@ import android.app.AlertDialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
+import androidx.viewpager2.widget.ViewPager2
 import com.martin.binarsuit.adapter.ObAdapter
+import com.martin.binarsuit.adapter.ObAdapter.Companion.FIRST
+import com.martin.binarsuit.adapter.ObAdapter.Companion.SECOND
+import com.martin.binarsuit.adapter.ObAdapter.Companion.THREE
 import com.martin.binarsuit.databinding.ActivityOnBoardingParentBinding
 import com.martin.binarsuit.databinding.DialogViewBinding
 import kotlinx.android.synthetic.main.activity_on_boarding_parent.*
@@ -21,6 +26,7 @@ class OnBoardingParent : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
         setViewPager()
+        setButton()
     }
 
     private fun setViewPager() {
@@ -29,7 +35,27 @@ class OnBoardingParent : AppCompatActivity() {
                 adapter = ObAdapter(this@OnBoardingParent)
                 currentItem = 0
             }
-            binding.indicator.setViewPager(vpOne)
+        .registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback(){
+                override fun onPageSelected(position: Int) {
+                        when (position){
+                            FIRST -> {btnLogin.visibility = View.GONE}
+                            SECOND -> {btnLogin.visibility = View.GONE}
+                            THREE -> {btnLogin.visibility = View.VISIBLE
+                            }
+                        }
+                }
+            })
+            indicator.setViewPager(vpOne)
+        }
+    }
+
+    private fun setButton() {
+        binding.apply {
+            btnLogin.setOnClickListener {
+                Intent(this@OnBoardingParent, MenuActivity::class.java).also { startActivity(it) }.also {
+                    finishAffinity()
+            }
+        }
         }
     }
 

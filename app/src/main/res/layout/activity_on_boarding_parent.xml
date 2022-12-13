@@ -16,13 +16,26 @@
         android:layout_centerInParent="true"
         android:layout_above="@id/indicator"/>
 
+    <ImageButton
+        android:id="@+id/btn_login"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="14dp"
+        android:layout_marginTop="14dp"
+        android:layout_marginEnd="22dp"
+        android:layout_marginBottom="14dp"
+        android:background="@color/white"
+        android:src="@drawable/ic_baseline_navigate_next" />
+
     <me.relex.circleindicator.CircleIndicator3
         android:id="@+id/indicator"
         android:layout_width="50dp"
         android:layout_height="40dp"
-        android:layout_centerInParent="true"
         android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        android:elevation="1dp"
         app:ci_drawable="@drawable/selected_dot"
-        app:ci_drawable_unselected="@drawable/default_dot"
-        />
+        app:ci_drawable_unselected="@drawable/default_dot" />
 </RelativeLayout>
