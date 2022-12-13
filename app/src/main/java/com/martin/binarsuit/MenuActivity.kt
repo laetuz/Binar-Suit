@@ -39,7 +39,7 @@ class MenuActivity : AppCompatActivity() {
                 startActivity(intentMain)
                 finishAffinity()
             }
-            //Pick Computer
+            //Pick Computer!
             relCom.setOnClickListener {
                 val intentMain = Intent(this@MenuActivity, MainActivity::class.java)
                 intentMain.putExtra("name", nameLogin)
