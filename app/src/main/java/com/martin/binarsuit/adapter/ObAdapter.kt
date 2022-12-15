@@ -7,7 +7,7 @@ import com.martin.binarsuit.onBoarding.OnBoardingTwo
 import com.martin.binarsuit.onBoarding.OnBoardingOne
 import com.martin.binarsuit.onBoarding.OnBoardingThree
 
-class ObAdapter (fragmentActivity: FragmentActivity): FragmentStateAdapter(fragmentActivity){
+class ObAdapter(fragmentActivity: FragmentActivity) : FragmentStateAdapter(fragmentActivity) {
 
     private val fragmentsData = listOf(
         OnBoardingOne.newInstance(FIRST),
@@ -15,7 +15,7 @@ class ObAdapter (fragmentActivity: FragmentActivity): FragmentStateAdapter(fragm
         OnBoardingThree.newInstance(THREE)
     )
 
-    companion object{
+    companion object {
         const val FIRST = 0
         const val SECOND = 1
         const val THREE = 2

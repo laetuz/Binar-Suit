@@ -19,7 +19,7 @@ import me.relex.circleindicator.CircleIndicator3
 class OnBoardingParent : AppCompatActivity() {
     private lateinit var binding: ActivityOnBoardingParentBinding
     private lateinit var bindingDialog: DialogViewBinding
-    private lateinit var adapterOb:ObAdapter
+    private lateinit var adapterOb: ObAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,20 +34,25 @@ class OnBoardingParent : AppCompatActivity() {
     private fun setViewPager() {
         binding.apply {
             vpOne.apply {
-                adapterOb= ObAdapter(this@OnBoardingParent)
+                adapterOb = ObAdapter(this@OnBoardingParent)
                 adapter = adapterOb
                 currentItem = 0
             }
-        .registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback(){
-                override fun onPageSelected(position: Int) {
-                        when (position){
-                            FIRST -> {btnLogin.visibility = View.GONE}
-                            SECOND -> {btnLogin.visibility = View.GONE}
-                            THREE -> {btnLogin.visibility = View.VISIBLE
+                .registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
+                    override fun onPageSelected(position: Int) {
+                        when (position) {
+                            FIRST -> {
+                                btnLogin.visibility = View.GONE
+                            }
+                            SECOND -> {
+                                btnLogin.visibility = View.GONE
+                            }
+                            THREE -> {
+                                btnLogin.visibility = View.VISIBLE
                             }
                         }
-                }
-            })
+                    }
+                })
             indicator.setViewPager(vpOne)
         }
     }
@@ -56,15 +61,14 @@ class OnBoardingParent : AppCompatActivity() {
         binding.apply {
             btnLogin.setOnClickListener {
                 val fragment = adapterOb.getFragment(vpOne.currentItem)
-                if (fragment is OnBoardingThree){
+                if (fragment is OnBoardingThree) {
                     Intent(this@OnBoardingParent, MenuActivity::class.java)
                         .apply { putExtra("name", fragment.buttonOne()) }.also {
-                        startActivity(it)
-                        finishAffinity()
-                    }
+                            startActivity(it)
+                            finishAffinity()
+                        }
                 }
-
-        }
+            }
         }
     }
 
