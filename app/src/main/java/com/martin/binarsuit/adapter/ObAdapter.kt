@@ -25,5 +25,7 @@ class ObAdapter (fragmentActivity: FragmentActivity): FragmentStateAdapter(fragm
         return fragmentsData.size
     }
 
+    fun getFragment(position: Int): Fragment = fragmentsData[position]
+
     override fun createFragment(position: Int): Fragment = fragmentsData[position]
 }

@@ -12,12 +12,14 @@ import com.martin.binarsuit.adapter.ObAdapter.Companion.SECOND
 import com.martin.binarsuit.adapter.ObAdapter.Companion.THREE
 import com.martin.binarsuit.databinding.ActivityOnBoardingParentBinding
 import com.martin.binarsuit.databinding.DialogViewBinding
+import com.martin.binarsuit.onBoarding.OnBoardingThree
 import kotlinx.android.synthetic.main.activity_on_boarding_parent.*
 import me.relex.circleindicator.CircleIndicator3
 
 class OnBoardingParent : AppCompatActivity() {
     private lateinit var binding: ActivityOnBoardingParentBinding
     private lateinit var bindingDialog: DialogViewBinding
+    private lateinit var adapterOb:ObAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,7 +34,8 @@ class OnBoardingParent : AppCompatActivity() {
     private fun setViewPager() {
         binding.apply {
             vpOne.apply {
-                adapter = ObAdapter(this@OnBoardingParent)
+                adapterOb= ObAdapter(this@OnBoardingParent)
+                adapter = adapterOb
                 currentItem = 0
             }
         .registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback(){
@@ -52,9 +55,15 @@ class OnBoardingParent : AppCompatActivity() {
     private fun setButton() {
         binding.apply {
             btnLogin.setOnClickListener {
-                Intent(this@OnBoardingParent, MenuActivity::class.java).also { startActivity(it) }.also {
-                    finishAffinity()
-            }
+                val fragment = adapterOb.getFragment(vpOne.currentItem)
+                if (fragment is OnBoardingThree){
+                    Intent(this@OnBoardingParent, MenuActivity::class.java)
+                        .apply { putExtra("name", fragment.buttonOne()) }.also {
+                        startActivity(it)
+                        finishAffinity()
+                    }
+                }
+
         }
         }
     }
