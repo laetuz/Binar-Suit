@@ -9,6 +9,7 @@ import android.os.Bundle
 import android.os.VibrationEffect
 import android.os.Vibrator
 import android.util.Log
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.martin.binarsuit.databinding.ActivityMainBinding
 import com.martin.binarsuit.databinding.DialogResultBinding
@@ -20,7 +21,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var bindingDialog: DialogViewBinding
     private lateinit var bindingResultBinding: DialogResultBinding
-    private lateinit var nameLogin:String
+    private lateinit var nameLogin: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -108,7 +109,6 @@ class MainActivity : AppCompatActivity() {
                     1 -> {
                         Log.d("ComSci", "Computer memilih gunting")
                         ivScissorCom.setBackgroundResource(R.drawable.bg_suit)
-
                         ivResult.setImageResource(R.drawable.img_menang)
                         ivRockCom.setBackgroundResource(0)
                         ivPaperCom.setBackgroundResource(0)
@@ -117,6 +117,8 @@ class MainActivity : AppCompatActivity() {
                         bindingResultBinding.tvResult.text = buildString {
                             append("$nameLogin\nMENANG!")
                         }
+                        Toast.makeText(this@MainActivity, "$nameLogin Menang", Toast.LENGTH_SHORT)
+                            .show()
                     }
                     2 -> {
                         Log.d("ComRock", "Computer memilih batu")
@@ -127,21 +129,22 @@ class MainActivity : AppCompatActivity() {
                         disableGame()
                         dialogGame()
                         bindingResultBinding.tvResult.setText(R.string.result_draw)
+                        Toast.makeText(this@MainActivity, "Seri", Toast.LENGTH_SHORT).show()
                     }
-                    else -> ivPaperCom.setBackgroundResource(R.drawable.bg_suit)
-                        .also {
-                            Log.d("ComPaper", "Computer memilih kertas")
-                            ivResult.setImageResource(R.drawable.img_menang2)
-                            ivRockCom.setBackgroundResource(0)
-                            ivScissorCom.setBackgroundResource(0)
-                            disableGame()
-                            dialogGame()
-                            bindingResultBinding.tvResult.setText(R.string.result_win_com)
-                        }
+                    else -> {
+                        Log.d("ComPaper", "Computer memilih kertas")
+                        ivPaperCom.setBackgroundResource(R.drawable.bg_suit)
+                        ivResult.setImageResource(R.drawable.img_menang2)
+                        ivRockCom.setBackgroundResource(0)
+                        ivScissorCom.setBackgroundResource(0)
+                        disableGame()
+                        dialogGame()
+                        bindingResultBinding.tvResult.setText(R.string.result_win_com)
+                        Toast.makeText(this@MainActivity, "CPU Menang", Toast.LENGTH_SHORT).show()
+                    }
                 }
             }
         }
-
     }
 
     //Called if player picked scissor. Dipanggil ketika player memilih gunting.
@@ -158,42 +161,44 @@ class MainActivity : AppCompatActivity() {
                     duration = 200
                 }.start()
                 when ((1..3).random()) {
-                    1 -> ivScissorCom.setBackgroundResource(R.drawable.bg_suit)
-                        .also {
-                            Log.d("Comp-Scissor", "Computer picked scissor")
-                            ivResult.setImageResource(R.drawable.img_draw)
-                            ivRockCom.setBackgroundResource(0)
-                            ivPaperCom.setBackgroundResource(0)
-                            disableGame()
-                            dialogGame()
-                            bindingResultBinding.tvResult.setText(R.string.result_draw)
+                    1 -> {
+                        Log.d("Comp-Scissor", "Computer picked scissor")
+                        ivScissorCom.setBackgroundResource(R.drawable.bg_suit)
+                        ivResult.setImageResource(R.drawable.img_draw)
+                        ivRockCom.setBackgroundResource(0)
+                        ivPaperCom.setBackgroundResource(0)
+                        disableGame()
+                        dialogGame()
+                        bindingResultBinding.tvResult.setText(R.string.result_draw)
+                        Toast.makeText(this@MainActivity, "Seri", Toast.LENGTH_SHORT).show()
+                    }
+                    2 -> {
+                        Log.d("Comp-Rock", "Computer picked rock")
+                        ivRockCom.setBackgroundResource(R.drawable.bg_suit)
+                        ivResult.setImageResource(R.drawable.img_menang2)
+                        ivScissorCom.setBackgroundResource(0)
+                        ivPaperCom.setBackgroundResource(0)
+                        disableGame()
+                        dialogGame()
+                        bindingResultBinding.tvResult.setText(R.string.result_win_com)
+                        Toast.makeText(this@MainActivity, "CPU Menang", Toast.LENGTH_SHORT).show()
+                    }
+                    else -> {
+                        Log.d("Comp-Paper", "Computer picked paper")
+                        ivPaperCom.setBackgroundResource(R.drawable.bg_suit)
+                        ivResult.setImageResource(R.drawable.img_menang)
+                        ivRockCom.setBackgroundResource(0)
+                        ivScissorCom.setBackgroundResource(0)
+                        disableGame()
+                        dialogGame()
+                        bindingResultBinding.tvResult.text = buildString {
+                            append("$nameLogin\nMENANG!")
                         }
-                    2 -> ivRockCom.setBackgroundResource(R.drawable.bg_suit)
-                        .also {
-                            Log.d("Comp-Rock", "Computer picked rock")
-                            ivResult.setImageResource(R.drawable.img_menang2)
-                            ivScissorCom.setBackgroundResource(0)
-                            ivPaperCom.setBackgroundResource(0)
-                            disableGame()
-                            dialogGame()
-                            bindingResultBinding.tvResult.setText(R.string.result_win_com)
-                        }
-                    else -> ivPaperCom.setBackgroundResource(R.drawable.bg_suit)
-                        .also {
-                            Log.d("Comp-Paper", "Computer picked paper")
-                            ivResult.setImageResource(R.drawable.img_menang)
-                            ivRockCom.setBackgroundResource(0)
-                            ivScissorCom.setBackgroundResource(0)
-                            disableGame()
-                            dialogGame()
-                            bindingResultBinding.tvResult.text = buildString {
-                                append("$nameLogin\nMENANG!")
-                            }
-                        }
+                        Toast.makeText(this@MainActivity, "Seri", Toast.LENGTH_SHORT).show()
+                    }
                 }
             }
         }
-
     }
 
     //Called if player picked paper. Dipanggil ketika player memilih kertas.
@@ -210,43 +215,44 @@ class MainActivity : AppCompatActivity() {
                     rotationBy(360f)
                 }.start()
                 when ((1..3).random()) {
-                    1 -> ivScissorCom.setBackgroundResource(R.drawable.bg_suit)
-                        .also {
-                            Log.d("Comp-Scissor", "Computer picked scissor")
-                            ivResult.setImageResource(R.drawable.img_menang2)
-                            ivRockCom.setBackgroundResource(0)
-                            ivPaperCom.setBackgroundResource(0)
-                            disableGame()
-                            dialogGame()
-                            bindingResultBinding.tvResult.setText(R.string.result_win_com)
+                    1 -> {
+                        Log.d("Comp-Scissor", "Computer picked scissor")
+                        ivScissorCom.setBackgroundResource(R.drawable.bg_suit)
+                        ivResult.setImageResource(R.drawable.img_menang2)
+                        ivRockCom.setBackgroundResource(0)
+                        ivPaperCom.setBackgroundResource(0)
+                        disableGame()
+                        dialogGame()
+                        bindingResultBinding.tvResult.setText(R.string.result_win_com)
+                        Toast.makeText(this@MainActivity, "CPU Menang", Toast.LENGTH_SHORT).show()
+                    }
+                    2 -> {
+                        Log.d("Comp-Rock", "Computer picked rock")
+                        ivRockCom.setBackgroundResource(R.drawable.bg_suit)
+                        ivResult.setImageResource(R.drawable.img_menang)
+                        ivScissorCom.setBackgroundResource(0)
+                        ivPaperCom.setBackgroundResource(0)
+                        disableGame()
+                        dialogGame()
+                        bindingResultBinding.tvResult.text = buildString {
+                            append("$nameLogin\nMENANG!")
                         }
-                    2 -> ivRockCom.setBackgroundResource(R.drawable.bg_suit)
-                        .also {
-                            Log.d("Comp-Rock", "Computer picked rock")
-                            ivResult.setImageResource(R.drawable.img_menang)
-                            ivScissorCom.setBackgroundResource(0)
-                            ivPaperCom.setBackgroundResource(0)
-                            disableGame()
-                            dialogGame()
-                            bindingResultBinding.tvResult.text = buildString {
-                                append("$nameLogin\nMENANG!")
-                            }
-                        }
-                    else -> ivPaperCom.setBackgroundResource(R.drawable.bg_suit)
-                        .also {
-                            Log.d("Comp-Paper", "Computer picked paper")
-                            ivResult.setImageResource(R.drawable.img_draw)
-                            ivRockCom.setBackgroundResource(0)
-                            ivScissorCom.setBackgroundResource(0)
-                            disableGame()
-                            dialogGame()
-                            bindingResultBinding.tvResult.setText(R.string.result_draw)
-                        }
+                        Toast.makeText(this@MainActivity, "Seri", Toast.LENGTH_SHORT).show()
+                    }
+                    else -> {
+                        Log.d("Comp-Paper", "Computer picked paper")
+                        ivPaperCom.setBackgroundResource(R.drawable.bg_suit)
+                        ivResult.setImageResource(R.drawable.img_draw)
+                        ivRockCom.setBackgroundResource(0)
+                        ivScissorCom.setBackgroundResource(0)
+                        disableGame()
+                        dialogGame()
+                        bindingResultBinding.tvResult.setText(R.string.result_draw)
+                        Toast.makeText(this@MainActivity, "Seri", Toast.LENGTH_SHORT).show()
+                    }
                 }
-
             }
         }
-
     }
 
     //For Sound on click. Untuk efek suara pada onClick.

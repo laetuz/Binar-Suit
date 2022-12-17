@@ -13,8 +13,6 @@ import com.martin.binarsuit.adapter.ObAdapter.Companion.THREE
 import com.martin.binarsuit.databinding.ActivityOnBoardingParentBinding
 import com.martin.binarsuit.databinding.DialogViewBinding
 import com.martin.binarsuit.onBoarding.OnBoardingThree
-import kotlinx.android.synthetic.main.activity_on_boarding_parent.*
-import me.relex.circleindicator.CircleIndicator3
 
 class OnBoardingParent : AppCompatActivity() {
     private lateinit var binding: ActivityOnBoardingParentBinding
@@ -27,10 +25,11 @@ class OnBoardingParent : AppCompatActivity() {
         binding = ActivityOnBoardingParentBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
-        setViewPager()
-        setButton()
+        setViewPager() //Shows the viewpager.
+        setButton() //
     }
 
+    //Shows the viewpager. Menampilkan viewpager.
     private fun setViewPager() {
         binding.apply {
             vpOne.apply {
@@ -57,11 +56,14 @@ class OnBoardingParent : AppCompatActivity() {
         }
     }
 
+    //Set button function.
     private fun setButton() {
         binding.apply {
             btnLogin.setOnClickListener {
                 val fragment = adapterOb.getFragment(vpOne.currentItem)
+                //Getting the editText intent from OnBoarding Three.
                 if (fragment is OnBoardingThree) {
+                    //Send the editText intent to Menu Activity.
                     Intent(this@OnBoardingParent, MenuActivity::class.java)
                         .apply { putExtra("name", fragment.buttonOne()) }.also {
                             startActivity(it)

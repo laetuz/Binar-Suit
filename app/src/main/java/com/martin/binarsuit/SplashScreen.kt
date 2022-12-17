@@ -13,19 +13,17 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.widget.ImageView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.app.ActivityCompat
-import java.util.*
 
+@SuppressLint("CustomSplashScreen")
 class SplashScreen : AppCompatActivity() {
     private var locationManager: LocationManager? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash_screen)
 
-        animateLogo()
-        delayHandler()
+        animateLogo() //Animating the logo
+        delayHandler() //Delaying the splash screen
     }
 
     // Animating the logo

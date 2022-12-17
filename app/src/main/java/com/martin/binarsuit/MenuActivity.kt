@@ -12,24 +12,26 @@ import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.snackbar.Snackbar.SnackbarLayout
 import com.martin.binarsuit.databinding.ActivityMenuBinding
 import com.martin.binarsuit.databinding.DialogViewBinding
-import com.martin.binarsuit.databinding.SnackbarCustomBinding
 
 class MenuActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMenuBinding
     private lateinit var bindingDialog: DialogViewBinding
     private lateinit var nameLogin: String
-    private lateinit var bindingSnack: SnackbarCustomBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMenuBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        //Getting the editText intent from OnBoardingParent.
         nameLogin = intent.getStringExtra("name").toString()
-        getName()
-        snackBar()
-        pickPlayer()
+
+        getName() //Get the name intent.
+        snackBar() //Show the snack bar.
+        pickPlayer() //Pick the game mode.
     }
 
+    //Get the name intent. Mendapatkan intent nama.
     private fun getName() {
         binding.tvMenuPlayer.text = buildString {
             append("$nameLogin vs Pemain")
@@ -39,6 +41,7 @@ class MenuActivity : AppCompatActivity() {
         }
     }
 
+    //Show the snack bar. Menampilkan snack bar.
     @SuppressLint("SetTextI18n")
     private fun snackBar() {
         val viewMenu = binding.root
@@ -56,16 +59,17 @@ class MenuActivity : AppCompatActivity() {
 
     }
 
+    //Pick the game mode. Memilih mode permainan.
     private fun pickPlayer() {
         binding.apply {
-            //Pick player
+            //Pick player! Memilih mode melawan player.
             relPlayer.setOnClickListener {
                 val intentMain = Intent(this@MenuActivity, PvpActivity::class.java)
                 intentMain.putExtra("name", nameLogin)
                 startActivity(intentMain)
                 finishAffinity()
             }
-            //Pick Computer!
+            //Pick Computer! Memilih mode melawan komputer.
             relCom.setOnClickListener {
                 val intentMain = Intent(this@MenuActivity, MainActivity::class.java)
                 intentMain.putExtra("name", nameLogin)
@@ -75,6 +79,8 @@ class MenuActivity : AppCompatActivity() {
         }
     }
 
+    //Shows dialog when user use back navigation.
+    // Menampilkan dialog ketika user memberi navigasi kembali.
     override fun onBackPressed() {
         bindingDialog = DialogViewBinding.inflate(layoutInflater)
         val view = bindingDialog.root

@@ -9,19 +9,14 @@ import com.martin.binarsuit.R
 
 class OnBoardingOne : Fragment() {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-
         return inflater.inflate(R.layout.fragment_on_boarding_one, container, false)
     }
 
+    //Set the fragment instance.
     companion object {
         fun newInstance(page: Int) = OnBoardingOne()
     }
