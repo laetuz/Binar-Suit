@@ -1,13 +1,14 @@
 <resources>
     <string name="app_name">Binar Suit</string>
     <string name="player_one">Pemain 1</string>
+    <string name="player_two">Pemain 2</string>
     <string name="tv_com">COM</string>
     <string name="btn_game">AYO MAIN!</string>
     <string name="tv_welcome">Welcome to Gunting Batu Kertas game. This game was developed for Binar Challenge submission by Ryo Martin.\n- 26 November 2022 -</string>
     <string name="tv_dialog">Yakin ingin keluar?</string>
     <string name="btn_dialog_ya">Ya</string>
     <string name="btn_dialog_tidak">Tidak</string>
-    <!-- TODO: Remove or change this placeholder text -->
+    <!--Fragment/OnBoarding-->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="onBoarding_one">Bermain suit melawan sesama pemain.</string>
     <string name="onBoarding_two">Bermain suit melawan komputer.</string>
@@ -21,4 +22,6 @@
     <string name="result_win_two">Pemain 2\nMENANG!</string>
     <!--Login-->
     <string name="title_login">Tuliskan namamu di bawah</string>
+    <!-- Menu   -->
+    <string name="pick_player">PILIH LAWANMU</string>
 </resources>

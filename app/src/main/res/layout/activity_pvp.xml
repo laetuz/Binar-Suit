@@ -134,7 +134,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/comic_sans"
             android:gravity="center"
-            android:text="@string/tv_com"
+            android:text="@string/player_two"
             android:textColor="@color/text_color"
             android:textSize="24sp" />
 

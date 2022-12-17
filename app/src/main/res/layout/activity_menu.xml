@@ -5,23 +5,38 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
+    android:id="@+id/layout_menu"
     tools:context=".MenuActivity">
 
-
     <RelativeLayout
+        android:id="@+id/baseLayout"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true">
+        android:layout_height="match_parent"
+        android:layout_centerHorizontal="true">
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginVertical="50dp"
+            android:fontFamily="@font/comic_sans"
+            android:text="@string/pick_player"
+            android:textSize="24sp"
+            android:textStyle="bold" />
 
         <RelativeLayout
             android:layout_width="wrap_content"
+            android:layout_centerVertical="true"
             android:layout_height="500dp">
 
             <RelativeLayout
                 android:id="@+id/rel_player"
-                android:layout_alignParentTop="true"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true">
+
                 <ImageView
                     android:id="@+id/iv_menu_player"
                     android:layout_width="250dp"
@@ -34,21 +49,21 @@
                     android:id="@+id/tv_menu_player"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="24sp"
-                    android:fontFamily="@font/comic_sans"
-                    android:textColor="@color/black"
-                    android:gravity="center"
-                    android:layout_centerHorizontal="true"
                     android:layout_alignBottom="@id/iv_menu_player"
-                    android:text="" />
+                    android:layout_centerHorizontal="true"
+                    android:fontFamily="@font/comic_sans"
+                    android:gravity="center"
+                    android:text=""
+                    android:textColor="@color/black"
+                    android:textSize="24sp" />
             </RelativeLayout>
 
             <RelativeLayout
                 android:id="@+id/rel_com"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                >
+                android:layout_alignParentBottom="true">
+
                 <ImageView
                     android:id="@+id/iv_menu_cpu"
                     android:layout_width="250dp"
@@ -61,13 +76,13 @@
                     android:id="@+id/tv_menu_cpu"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="24sp"
-                    android:fontFamily="@font/comic_sans"
-                    android:textColor="@color/black"
-                    android:gravity="center"
-                    android:layout_centerHorizontal="true"
                     android:layout_alignBottom="@id/iv_menu_cpu"
-                    android:text="" />
+                    android:layout_centerHorizontal="true"
+                    android:fontFamily="@font/comic_sans"
+                    android:gravity="center"
+                    android:text=""
+                    android:textColor="@color/black"
+                    android:textSize="24sp" />
             </RelativeLayout>
 
 

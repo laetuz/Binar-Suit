@@ -122,15 +122,15 @@ class PvpActivity : AppCompatActivity() {
                 }
                 ivPaperCom.setOnClickListener {
                     ivPaperCom.setBackgroundResource(R.drawable.bg_suit).also {
-                            Log.d("ComPaper", "Player two memilih kertas")
-                            ivResult.setImageResource(R.drawable.img_menang2)
-                            ivRockCom.setBackgroundResource(0)
-                            ivScissorCom.setBackgroundResource(0)
-                            disableGame()
-                            dialogGame()
-                            ivCensor.visibility = View.GONE
-                            bindingResultBinding.tvResult.setText(R.string.result_win_two)
-                        }
+                        Log.d("ComPaper", "Player two memilih kertas")
+                        ivResult.setImageResource(R.drawable.img_menang2)
+                        ivRockCom.setBackgroundResource(0)
+                        ivScissorCom.setBackgroundResource(0)
+                        disableGame()
+                        dialogGame()
+                        ivCensor.visibility = View.GONE
+                        bindingResultBinding.tvResult.setText(R.string.result_win_two)
+                    }
                 }
                 ivRockCom.setOnClickListener {
                     Log.d("ComRock", "Computer memilih batu")
@@ -164,39 +164,39 @@ class PvpActivity : AppCompatActivity() {
                 ivCensor.visibility = View.VISIBLE
                 ivScissorCom.setOnClickListener {
                     ivScissorCom.setBackgroundResource(R.drawable.bg_suit).also {
-                            Log.d("Comp-Scissor", "Computer picked scissor")
-                            ivResult.setImageResource(R.drawable.img_draw)
-                            ivRockCom.setBackgroundResource(0)
+                        Log.d("Comp-Scissor", "Computer picked scissor")
+                        ivResult.setImageResource(R.drawable.img_draw)
+                        ivRockCom.setBackgroundResource(0)
+                        ivPaperCom.setBackgroundResource(0)
+                        disableGame()
+                        dialogGame()
+                        ivCensor.visibility = View.GONE
+                        bindingResultBinding.tvResult.setText(R.string.result_draw)
+                    }
+                    ivRockCom.setOnClickListener {
+                        ivRockCom.setBackgroundResource(R.drawable.bg_suit).also {
+                            Log.d("Comp-Rock", "Computer picked rock")
+                            ivResult.setImageResource(R.drawable.img_menang2)
+                            ivScissorCom.setBackgroundResource(0)
                             ivPaperCom.setBackgroundResource(0)
                             disableGame()
                             dialogGame()
                             ivCensor.visibility = View.GONE
-                            bindingResultBinding.tvResult.setText(R.string.result_draw)
+                            bindingResultBinding.tvResult.setText(R.string.result_win_two)
                         }
-                    ivRockCom.setOnClickListener {
-                        ivRockCom.setBackgroundResource(R.drawable.bg_suit).also {
-                                Log.d("Comp-Rock", "Computer picked rock")
-                                ivResult.setImageResource(R.drawable.img_menang2)
+                        ivPaperCom.setOnClickListener {
+                            ivPaperCom.setBackgroundResource(R.drawable.bg_suit).also {
+                                Log.d("Comp-Paper", "Computer picked paper")
+                                ivResult.setImageResource(R.drawable.img_menang)
+                                ivRockCom.setBackgroundResource(0)
                                 ivScissorCom.setBackgroundResource(0)
-                                ivPaperCom.setBackgroundResource(0)
                                 disableGame()
                                 dialogGame()
                                 ivCensor.visibility = View.GONE
-                                bindingResultBinding.tvResult.setText(R.string.result_win_two)
-                            }
-                        ivPaperCom.setOnClickListener {
-                            ivPaperCom.setBackgroundResource(R.drawable.bg_suit).also {
-                                    Log.d("Comp-Paper", "Computer picked paper")
-                                    ivResult.setImageResource(R.drawable.img_menang)
-                                    ivRockCom.setBackgroundResource(0)
-                                    ivScissorCom.setBackgroundResource(0)
-                                    disableGame()
-                                    dialogGame()
-                                    ivCensor.visibility = View.GONE
-                                    bindingResultBinding.tvResult.text = buildString {
-                                        append("$nameLogin\nMENANG!")
-                                    }
+                                bindingResultBinding.tvResult.text = buildString {
+                                    append("$nameLogin\nMENANG!")
                                 }
+                            }
                         }
 
                     }
@@ -222,41 +222,41 @@ class PvpActivity : AppCompatActivity() {
                 ivCensor.visibility = View.VISIBLE
                 ivScissorCom.setOnClickListener {
                     ivScissorCom.setBackgroundResource(R.drawable.bg_suit).also {
-                            Log.d("Comp-Scissor", "Computer picked scissor")
-                            ivResult.setImageResource(R.drawable.img_menang2)
-                            ivRockCom.setBackgroundResource(0)
-                            ivPaperCom.setBackgroundResource(0)
-                            disableGame()
-                            dialogGame()
-                            ivCensor.visibility = View.GONE
-                            bindingResultBinding.tvResult.setText(R.string.result_win_two)
-                        }
+                        Log.d("Comp-Scissor", "Computer picked scissor")
+                        ivResult.setImageResource(R.drawable.img_menang2)
+                        ivRockCom.setBackgroundResource(0)
+                        ivPaperCom.setBackgroundResource(0)
+                        disableGame()
+                        dialogGame()
+                        ivCensor.visibility = View.GONE
+                        bindingResultBinding.tvResult.setText(R.string.result_win_two)
+                    }
                 }
                 ivRockCom.setOnClickListener {
                     ivRockCom.setBackgroundResource(R.drawable.bg_suit).also {
-                            Log.d("Comp-Rock", "Computer picked rock")
-                            ivResult.setImageResource(R.drawable.img_menang)
-                            ivScissorCom.setBackgroundResource(0)
-                            ivPaperCom.setBackgroundResource(0)
-                            disableGame()
-                            dialogGame()
-                            ivCensor.visibility = View.GONE
-                            bindingResultBinding.tvResult.text = buildString {
-                                append("$nameLogin\nMENANG!")
-                            }
+                        Log.d("Comp-Rock", "Computer picked rock")
+                        ivResult.setImageResource(R.drawable.img_menang)
+                        ivScissorCom.setBackgroundResource(0)
+                        ivPaperCom.setBackgroundResource(0)
+                        disableGame()
+                        dialogGame()
+                        ivCensor.visibility = View.GONE
+                        bindingResultBinding.tvResult.text = buildString {
+                            append("$nameLogin\nMENANG!")
                         }
+                    }
                 }
                 ivPaperCom.setOnClickListener {
                     ivPaperCom.setBackgroundResource(R.drawable.bg_suit).also {
-                            Log.d("Comp-Paper", "Computer picked paper")
-                            ivResult.setImageResource(R.drawable.img_draw)
-                            ivRockCom.setBackgroundResource(0)
-                            ivScissorCom.setBackgroundResource(0)
-                            disableGame()
-                            dialogGame()
-                            ivCensor.visibility = View.GONE
-                            bindingResultBinding.tvResult.setText(R.string.result_draw)
-                        }
+                        Log.d("Comp-Paper", "Computer picked paper")
+                        ivResult.setImageResource(R.drawable.img_draw)
+                        ivRockCom.setBackgroundResource(0)
+                        ivScissorCom.setBackgroundResource(0)
+                        disableGame()
+                        dialogGame()
+                        ivCensor.visibility = View.GONE
+                        bindingResultBinding.tvResult.setText(R.string.result_draw)
+                    }
                 }
             }
         }
