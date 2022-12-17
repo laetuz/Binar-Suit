@@ -10,9 +10,8 @@ import android.os.VibrationEffect
 import android.os.Vibrator
 import android.util.Log
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.isGone
-import androidx.core.view.isVisible
 import com.martin.binarsuit.databinding.ActivityPvpBinding
 import com.martin.binarsuit.databinding.DialogResultBinding
 import com.martin.binarsuit.databinding.DialogViewBinding
@@ -109,7 +108,7 @@ class PvpActivity : AppCompatActivity() {
                 ivCensor.visibility = View.VISIBLE
                 ivScissorCom.setOnClickListener {
                     ivScissorCom.setBackgroundResource(R.drawable.bg_suit)
-                    Log.d("Play", "Player two memilih gunting")
+                    Log.d("Pvp", "Player two memilih gunting")
                     ivResult.setImageResource(R.drawable.img_menang)
                     ivRockCom.setBackgroundResource(0)
                     ivPaperCom.setBackgroundResource(0)
@@ -119,10 +118,11 @@ class PvpActivity : AppCompatActivity() {
                     bindingResultBinding.tvResult.text = buildString {
                         append("$nameLogin\nMENANG!")
                     }
+                    Toast.makeText(this@PvpActivity, "$nameLogin Menang", Toast.LENGTH_SHORT).show()
                 }
                 ivPaperCom.setOnClickListener {
                     ivPaperCom.setBackgroundResource(R.drawable.bg_suit).also {
-                        Log.d("ComPaper", "Player two memilih kertas")
+                        Log.d("Pvp", "Player two memilih kertas")
                         ivResult.setImageResource(R.drawable.img_menang2)
                         ivRockCom.setBackgroundResource(0)
                         ivScissorCom.setBackgroundResource(0)
@@ -130,10 +130,11 @@ class PvpActivity : AppCompatActivity() {
                         dialogGame()
                         ivCensor.visibility = View.GONE
                         bindingResultBinding.tvResult.setText(R.string.result_win_two)
+                        Toast.makeText(this@PvpActivity, "Pemain 2 Menang", Toast.LENGTH_SHORT).show()
                     }
                 }
                 ivRockCom.setOnClickListener {
-                    Log.d("ComRock", "Computer memilih batu")
+                    Log.d("Pvp", "Player two memilih batu")
                     ivRockCom.setBackgroundResource(R.drawable.bg_suit)
                     ivResult.setImageResource(R.drawable.img_draw)
                     ivScissorCom.setBackgroundResource(0)
@@ -142,10 +143,10 @@ class PvpActivity : AppCompatActivity() {
                     dialogGame()
                     ivCensor.visibility = View.GONE
                     bindingResultBinding.tvResult.setText(R.string.result_draw)
+                    Toast.makeText(this@PvpActivity, "Seri", Toast.LENGTH_SHORT).show()
                 }
             }
         }
-
     }
 
     //Called if player picked scissor. Dipanggil ketika player memilih gunting.
@@ -158,48 +159,48 @@ class PvpActivity : AppCompatActivity() {
                 ivRockPlayer.setBackgroundResource(0)
                 ivPaperPlayer.setBackgroundResource(0)
                 ivResult.animate().apply {
-                    rotationBy(360f)
                     duration = 200
+                    rotationBy(360f)
                 }.start()
                 ivCensor.visibility = View.VISIBLE
                 ivScissorCom.setOnClickListener {
-                    ivScissorCom.setBackgroundResource(R.drawable.bg_suit).also {
-                        Log.d("Comp-Scissor", "Computer picked scissor")
-                        ivResult.setImageResource(R.drawable.img_draw)
+                    ivScissorCom.setBackgroundResource(R.drawable.bg_suit)
+                    Log.d("Pvp", "Player two memilih gunting")
+                    ivResult.setImageResource(R.drawable.img_draw)
+                    ivRockCom.setBackgroundResource(0)
+                    ivPaperCom.setBackgroundResource(0)
+                    disableGame()
+                    dialogGame()
+                    ivCensor.visibility = View.GONE
+                    bindingResultBinding.tvResult.setText(R.string.result_draw)
+                    Toast.makeText(this@PvpActivity, "Seri", Toast.LENGTH_SHORT).show()
+                }
+                ivPaperCom.setOnClickListener {
+                    ivPaperCom.setBackgroundResource(R.drawable.bg_suit).also {
+                        Log.d("Pvp", "Player two memilih kertas")
+                        ivResult.setImageResource(R.drawable.img_menang2)
                         ivRockCom.setBackgroundResource(0)
-                        ivPaperCom.setBackgroundResource(0)
+                        ivScissorCom.setBackgroundResource(0)
                         disableGame()
                         dialogGame()
                         ivCensor.visibility = View.GONE
-                        bindingResultBinding.tvResult.setText(R.string.result_draw)
-                    }
-                    ivRockCom.setOnClickListener {
-                        ivRockCom.setBackgroundResource(R.drawable.bg_suit).also {
-                            Log.d("Comp-Rock", "Computer picked rock")
-                            ivResult.setImageResource(R.drawable.img_menang2)
-                            ivScissorCom.setBackgroundResource(0)
-                            ivPaperCom.setBackgroundResource(0)
-                            disableGame()
-                            dialogGame()
-                            ivCensor.visibility = View.GONE
-                            bindingResultBinding.tvResult.setText(R.string.result_win_two)
+                        bindingResultBinding.tvResult.text = buildString {
+                            append("$nameLogin\nMENANG!")
                         }
-                        ivPaperCom.setOnClickListener {
-                            ivPaperCom.setBackgroundResource(R.drawable.bg_suit).also {
-                                Log.d("Comp-Paper", "Computer picked paper")
-                                ivResult.setImageResource(R.drawable.img_menang)
-                                ivRockCom.setBackgroundResource(0)
-                                ivScissorCom.setBackgroundResource(0)
-                                disableGame()
-                                dialogGame()
-                                ivCensor.visibility = View.GONE
-                                bindingResultBinding.tvResult.text = buildString {
-                                    append("$nameLogin\nMENANG!")
-                                }
-                            }
-                        }
-
+                        Toast.makeText(this@PvpActivity, "$nameLogin Menang", Toast.LENGTH_SHORT).show()
                     }
+                }
+                ivRockCom.setOnClickListener {
+                    Log.d("Pvp", "Player two memilih batu")
+                    ivRockCom.setBackgroundResource(R.drawable.img_menang2)
+                    ivResult.setImageResource(R.drawable.img_draw)
+                    ivScissorCom.setBackgroundResource(0)
+                    ivPaperCom.setBackgroundResource(0)
+                    disableGame()
+                    dialogGame()
+                    ivCensor.visibility = View.GONE
+                    bindingResultBinding.tvResult.setText(R.string.result_win_two)
+                    Toast.makeText(this@PvpActivity, "Player 2 menang", Toast.LENGTH_SHORT).show()
                 }
             }
         }
@@ -222,7 +223,7 @@ class PvpActivity : AppCompatActivity() {
                 ivCensor.visibility = View.VISIBLE
                 ivScissorCom.setOnClickListener {
                     ivScissorCom.setBackgroundResource(R.drawable.bg_suit).also {
-                        Log.d("Comp-Scissor", "Computer picked scissor")
+                        Log.d("Pvp", "Player 2 picked scissor")
                         ivResult.setImageResource(R.drawable.img_menang2)
                         ivRockCom.setBackgroundResource(0)
                         ivPaperCom.setBackgroundResource(0)
@@ -230,11 +231,12 @@ class PvpActivity : AppCompatActivity() {
                         dialogGame()
                         ivCensor.visibility = View.GONE
                         bindingResultBinding.tvResult.setText(R.string.result_win_two)
+                        Toast.makeText(this@PvpActivity, "Pemain 2 Menang", Toast.LENGTH_SHORT).show()
                     }
                 }
                 ivRockCom.setOnClickListener {
                     ivRockCom.setBackgroundResource(R.drawable.bg_suit).also {
-                        Log.d("Comp-Rock", "Computer picked rock")
+                        Log.d("Pvp", "Player 2 picked rock")
                         ivResult.setImageResource(R.drawable.img_menang)
                         ivScissorCom.setBackgroundResource(0)
                         ivPaperCom.setBackgroundResource(0)
@@ -244,11 +246,12 @@ class PvpActivity : AppCompatActivity() {
                         bindingResultBinding.tvResult.text = buildString {
                             append("$nameLogin\nMENANG!")
                         }
+                        Toast.makeText(this@PvpActivity, "$nameLogin Menang", Toast.LENGTH_SHORT).show()
                     }
                 }
                 ivPaperCom.setOnClickListener {
                     ivPaperCom.setBackgroundResource(R.drawable.bg_suit).also {
-                        Log.d("Comp-Paper", "Computer picked paper")
+                        Log.d("Pvp", "Player 2 picked paper")
                         ivResult.setImageResource(R.drawable.img_draw)
                         ivRockCom.setBackgroundResource(0)
                         ivScissorCom.setBackgroundResource(0)
@@ -256,6 +259,7 @@ class PvpActivity : AppCompatActivity() {
                         dialogGame()
                         ivCensor.visibility = View.GONE
                         bindingResultBinding.tvResult.setText(R.string.result_draw)
+                        Toast.makeText(this@PvpActivity, "Seri", Toast.LENGTH_SHORT).show()
                     }
                 }
             }
@@ -297,8 +301,6 @@ class PvpActivity : AppCompatActivity() {
         val view = bindingResultBinding.root
         val builder = AlertDialog.Builder(this@PvpActivity)
         builder.setView(view)
-
-        //val intentThis:Intent = (this@MainActivity)
 
         val dialog = builder.create()
         dialog.show()

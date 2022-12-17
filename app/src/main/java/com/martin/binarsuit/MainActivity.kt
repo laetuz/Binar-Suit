@@ -14,7 +14,6 @@ import androidx.appcompat.app.AppCompatActivity
 import com.martin.binarsuit.databinding.ActivityMainBinding
 import com.martin.binarsuit.databinding.DialogResultBinding
 import com.martin.binarsuit.databinding.DialogViewBinding
-import org.w3c.dom.Text
 
 
 class MainActivity : AppCompatActivity() {
@@ -117,8 +116,7 @@ class MainActivity : AppCompatActivity() {
                         bindingResultBinding.tvResult.text = buildString {
                             append("$nameLogin\nMENANG!")
                         }
-                        Toast.makeText(this@MainActivity, "$nameLogin Menang", Toast.LENGTH_SHORT)
-                            .show()
+                        Toast.makeText(this@MainActivity, "$nameLogin Menang", Toast.LENGTH_SHORT).show()
                     }
                     2 -> {
                         Log.d("ComRock", "Computer memilih batu")
@@ -194,7 +192,7 @@ class MainActivity : AppCompatActivity() {
                         bindingResultBinding.tvResult.text = buildString {
                             append("$nameLogin\nMENANG!")
                         }
-                        Toast.makeText(this@MainActivity, "Seri", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this@MainActivity, "$nameLogin Menang", Toast.LENGTH_SHORT).show()
                     }
                 }
             }
@@ -237,7 +235,7 @@ class MainActivity : AppCompatActivity() {
                         bindingResultBinding.tvResult.text = buildString {
                             append("$nameLogin\nMENANG!")
                         }
-                        Toast.makeText(this@MainActivity, "Seri", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this@MainActivity, "$nameLogin Menang", Toast.LENGTH_SHORT).show()
                     }
                     else -> {
                         Log.d("Comp-Paper", "Computer picked paper")
@@ -289,8 +287,6 @@ class MainActivity : AppCompatActivity() {
         val view = bindingResultBinding.root
         val builder = AlertDialog.Builder(this@MainActivity)
         builder.setView(view)
-
-        //val intentThis:Intent = (this@MainActivity)
 
         val dialog = builder.create()
         dialog.show()
