@@ -116,7 +116,8 @@ class MainActivity : AppCompatActivity() {
                         bindingResultBinding.tvResult.text = buildString {
                             append("$nameLogin\nMENANG!")
                         }
-                        Toast.makeText(this@MainActivity, "$nameLogin Menang", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this@MainActivity, "$nameLogin Menang", Toast.LENGTH_SHORT)
+                            .show()
                     }
                     2 -> {
                         Log.d("ComRock", "Computer memilih batu")
@@ -192,7 +193,8 @@ class MainActivity : AppCompatActivity() {
                         bindingResultBinding.tvResult.text = buildString {
                             append("$nameLogin\nMENANG!")
                         }
-                        Toast.makeText(this@MainActivity, "$nameLogin Menang", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this@MainActivity, "$nameLogin Menang", Toast.LENGTH_SHORT)
+                            .show()
                     }
                 }
             }
@@ -235,7 +237,8 @@ class MainActivity : AppCompatActivity() {
                         bindingResultBinding.tvResult.text = buildString {
                             append("$nameLogin\nMENANG!")
                         }
-                        Toast.makeText(this@MainActivity, "$nameLogin Menang", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this@MainActivity, "$nameLogin Menang", Toast.LENGTH_SHORT)
+                            .show()
                     }
                     else -> {
                         Log.d("Comp-Paper", "Computer picked paper")

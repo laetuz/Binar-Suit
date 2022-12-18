@@ -23,6 +23,7 @@
             android:layout_marginVertical="50dp"
             android:fontFamily="@font/comic_sans"
             android:text="@string/pick_player"
+            android:textColor="@color/black"
             android:textSize="24sp"
             android:textStyle="bold" />
 

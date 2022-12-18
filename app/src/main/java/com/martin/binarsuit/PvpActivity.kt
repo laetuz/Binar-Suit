@@ -130,7 +130,8 @@ class PvpActivity : AppCompatActivity() {
                         dialogGame()
                         ivCensor.visibility = View.GONE
                         bindingResultBinding.tvResult.setText(R.string.result_win_two)
-                        Toast.makeText(this@PvpActivity, "Pemain 2 Menang", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this@PvpActivity, "Pemain 2 Menang", Toast.LENGTH_SHORT)
+                            .show()
                     }
                 }
                 ivRockCom.setOnClickListener {
@@ -187,7 +188,8 @@ class PvpActivity : AppCompatActivity() {
                         bindingResultBinding.tvResult.text = buildString {
                             append("$nameLogin\nMENANG!")
                         }
-                        Toast.makeText(this@PvpActivity, "$nameLogin Menang", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this@PvpActivity, "$nameLogin Menang", Toast.LENGTH_SHORT)
+                            .show()
                     }
                 }
                 ivRockCom.setOnClickListener {
@@ -231,7 +233,8 @@ class PvpActivity : AppCompatActivity() {
                         dialogGame()
                         ivCensor.visibility = View.GONE
                         bindingResultBinding.tvResult.setText(R.string.result_win_two)
-                        Toast.makeText(this@PvpActivity, "Pemain 2 Menang", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this@PvpActivity, "Pemain 2 Menang", Toast.LENGTH_SHORT)
+                            .show()
                     }
                 }
                 ivRockCom.setOnClickListener {
@@ -246,7 +249,8 @@ class PvpActivity : AppCompatActivity() {
                         bindingResultBinding.tvResult.text = buildString {
                             append("$nameLogin\nMENANG!")
                         }
-                        Toast.makeText(this@PvpActivity, "$nameLogin Menang", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this@PvpActivity, "$nameLogin Menang", Toast.LENGTH_SHORT)
+                            .show()
                     }
                 }
                 ivPaperCom.setOnClickListener {
