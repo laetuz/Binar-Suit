@@ -133,7 +133,7 @@ class MainActivity : AppCompatActivity() {
                     else -> {
                         Log.d("ComPaper", "Computer memilih kertas")
                         ivPaperCom.setBackgroundResource(R.drawable.bg_suit)
-                        ivResult.setImageResource(R.drawable.img_menang2)
+                        ivResult.setImageResource(R.drawable.img_menang_two)
                         ivRockCom.setBackgroundResource(0)
                         ivScissorCom.setBackgroundResource(0)
                         disableGame()
@@ -174,7 +174,7 @@ class MainActivity : AppCompatActivity() {
                     2 -> {
                         Log.d("Comp-Rock", "Computer picked rock")
                         ivRockCom.setBackgroundResource(R.drawable.bg_suit)
-                        ivResult.setImageResource(R.drawable.img_menang2)
+                        ivResult.setImageResource(R.drawable.img_menang_two)
                         ivScissorCom.setBackgroundResource(0)
                         ivPaperCom.setBackgroundResource(0)
                         disableGame()
@@ -218,7 +218,7 @@ class MainActivity : AppCompatActivity() {
                     1 -> {
                         Log.d("Comp-Scissor", "Computer picked scissor")
                         ivScissorCom.setBackgroundResource(R.drawable.bg_suit)
-                        ivResult.setImageResource(R.drawable.img_menang2)
+                        ivResult.setImageResource(R.drawable.img_menang_two)
                         ivRockCom.setBackgroundResource(0)
                         ivPaperCom.setBackgroundResource(0)
                         disableGame()

@@ -123,7 +123,7 @@ class PvpActivity : AppCompatActivity() {
                 ivPaperCom.setOnClickListener {
                     ivPaperCom.setBackgroundResource(R.drawable.bg_suit).also {
                         Log.d("Pvp", "Player two memilih kertas")
-                        ivResult.setImageResource(R.drawable.img_menang2)
+                        ivResult.setImageResource(R.drawable.img_menang_two)
                         ivRockCom.setBackgroundResource(0)
                         ivScissorCom.setBackgroundResource(0)
                         disableGame()
@@ -179,7 +179,7 @@ class PvpActivity : AppCompatActivity() {
                 ivPaperCom.setOnClickListener {
                     ivPaperCom.setBackgroundResource(R.drawable.bg_suit).also {
                         Log.d("Pvp", "Player two memilih kertas")
-                        ivResult.setImageResource(R.drawable.img_menang2)
+                        ivResult.setImageResource(R.drawable.img_menang_two)
                         ivRockCom.setBackgroundResource(0)
                         ivScissorCom.setBackgroundResource(0)
                         disableGame()
@@ -194,7 +194,7 @@ class PvpActivity : AppCompatActivity() {
                 }
                 ivRockCom.setOnClickListener {
                     Log.d("Pvp", "Player two memilih batu")
-                    ivRockCom.setBackgroundResource(R.drawable.img_menang2)
+                    ivRockCom.setBackgroundResource(R.drawable.img_menang_two)
                     ivResult.setImageResource(R.drawable.img_draw)
                     ivScissorCom.setBackgroundResource(0)
                     ivPaperCom.setBackgroundResource(0)
@@ -226,7 +226,7 @@ class PvpActivity : AppCompatActivity() {
                 ivScissorCom.setOnClickListener {
                     ivScissorCom.setBackgroundResource(R.drawable.bg_suit).also {
                         Log.d("Pvp", "Player 2 picked scissor")
-                        ivResult.setImageResource(R.drawable.img_menang2)
+                        ivResult.setImageResource(R.drawable.img_menang_two)
                         ivRockCom.setBackgroundResource(0)
                         ivPaperCom.setBackgroundResource(0)
                         disableGame()
